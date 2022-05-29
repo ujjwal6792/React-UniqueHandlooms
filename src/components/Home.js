@@ -6,12 +6,6 @@ import { db } from "./firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 import Hero from "../images/Hero.png";
-import Product1 from "../images/Product_01.PNG";
-import Product2 from "../images/Product_02.PNG";
-import Product3 from "../images/Product_03.PNG";
-import Product4 from "../images/Product_04.PNG";
-import Product5 from "../images/Product_05.PNG";
-import Product6 from "../images/Product_06.PNG";
 
 function Home() {
   const [products, setProducts] = useState([]);

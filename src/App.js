@@ -8,11 +8,12 @@ import Login from "./components/Login";
 import Checkout from "./components/Checkout";
 import Payment from "./components/Payment";
 import Footer from "./components/Footer";
-import NewArrivals from "./components/NewArrivals";
+import Admin from "./components/Admin";
 import { auth } from "./components/firebase";
 import { useStateValue } from "./components/StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { AdminPanelSettings } from "@mui/icons-material";
 
 const promise = loadStripe(
   "pk_test_51L1VGKSAA1y0OG767dnJldN2dLqf3sVagPzy5A15o7x1jYSBQ0rpRvT9sr31o0sP8mpP1pxsDhN6dzqVt2vOW7Oq00vKGDnUKg"
@@ -48,6 +49,7 @@ function App() {
       <Elements stripe={promise} element={[<Payment />]}>
         <div className="app">
           <Routes>
+          <Route path="/addproduct" element={<Admin />} />
             <Route path="/login" element={[<Login />, <Footer />]} />
             <Route
               path="/payment"
