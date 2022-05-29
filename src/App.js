@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Checkout from "./components/Checkout";
 import Payment from "./components/Payment";
 import Footer from "./components/Footer";
+import NewArrivals from "./components/NewArrivals";
 import { auth } from "./components/firebase";
 import { useStateValue } from "./components/StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
@@ -25,7 +26,6 @@ function App() {
   const [{}, dispatch] = useStateValue();
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log("THE USER IS >>> ", authUser);
 
       if (authUser) {
         dispatch({
@@ -48,10 +48,19 @@ function App() {
       <Elements stripe={promise} element={[<Payment />]}>
         <div className="app">
           <Routes>
-            <Route path="/login" element={[<Login />, <Footer/>]} />
-            <Route path="/payment" element={[<Header />, <Payment />,<Footer/>]} />
-            <Route path="/checkout" element={[<Header />, <Checkout />,<Footer/>]} />
-            <Route path="/" element={[<Header />,<Welcome/>, <Home />,<Footer/>]} />
+            <Route path="/login" element={[<Login />, <Footer />]} />
+            <Route
+              path="/payment"
+              element={[<Header />, <Payment />, <Footer />]}
+            />
+            <Route
+              path="/checkout"
+              element={[<Header />, <Checkout />, <Footer />]}
+            />
+            <Route
+              path="/"
+              element={[<Header />, <Welcome />,<Home />, <Footer />]}
+            />
           </Routes>
         </div>
       </Elements>

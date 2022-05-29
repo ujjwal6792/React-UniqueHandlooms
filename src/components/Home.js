@@ -1,26 +1,49 @@
 import React from "react";
 import "../style/Home.css";
 import Product from "./Product";
-import Hero from '../images/Hero.png'
-import Product1 from '../images/Product_01.PNG'
-import Product2 from '../images/Product_02.PNG'
-import Product3 from '../images/Product_03.PNG'
-import Product4 from '../images/Product_04.PNG'
-import Product5 from '../images/Product_05.PNG'
-import Product6 from '../images/Product_06.PNG'
+import { useState, useEffect } from "react";
+import { db } from "./firebase";
+import { collection, getDocs } from "firebase/firestore";
+
+import Hero from "../images/Hero.png";
+import Product1 from "../images/Product_01.PNG";
+import Product2 from "../images/Product_02.PNG";
+import Product3 from "../images/Product_03.PNG";
+import Product4 from "../images/Product_04.PNG";
+import Product5 from "../images/Product_05.PNG";
+import Product6 from "../images/Product_06.PNG";
 
 function Home() {
+  const [products, setProducts] = useState([]);
+  const productCollectionRef = collection(db, "Products");
+  useEffect(() => {
+    const getProducts = async () => {
+      const data = await getDocs(productCollectionRef);
+      setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getProducts();
+  }, []);
   return (
     <div className="home">
       <div className="home__container">
-        <img
-          className="home__image"
-          src={Hero}
-          alt=""
-        />
-
+        <img className="home__image" src={Hero} alt="" />
+        <div className="productTopBar">
+          <h2>New Collections</h2>
+          <h2 className="cursorPointer">filters</h2>
+        </div>
         <div className="home__row">
-          <Product
+         { (products.map((item)=>(
+          <Product key={item.id}
+            id={item.id}
+            title={item.Name}
+            price={item.Price}
+            rating={5}
+            image={item.Img}
+            size={item.Size}
+          />
+          )))
+         }
+          {/* <Product
             id="12321341"
             title="Green Suit with Pants and Chunni"
             price={1200}
@@ -69,7 +92,7 @@ function Home() {
             rating={4}
             image={Product6}
             size={`40`}
-          />
+          /> */}
         </div>
       </div>
     </div>
