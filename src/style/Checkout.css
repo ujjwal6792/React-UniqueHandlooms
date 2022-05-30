@@ -49,14 +49,18 @@
 
 @media screen and (max-width: 480px){
     .checkout{
-        margin-bottom: 100px;
+        padding-bottom: 200px;
     }
     .checkoutLeft{
         padding-left: 10px;
         margin-left: auto;
         margin-right: auto;
+        padding-bottom: 200px;
     }
     .checkoutRight{
+        width: 80%;
+        position: fixed;
+        bottom: -15px;
         margin-left: auto;
         margin-right: auto;
     }

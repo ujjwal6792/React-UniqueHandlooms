@@ -69,6 +69,9 @@ Link {
 
 @media screen and (max-width: 480px){
   .subtotal{
+    width: 100%;
     margin-bottom: 5rem;
+    margin-left: auto ;
+    margin-right: auto ;
   }
 }
