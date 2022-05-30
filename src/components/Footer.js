@@ -17,7 +17,7 @@ function Footer() {
               <Link to="/" className="nav-links footerBasket ">
               <HomeRoundedIcon/>
               </Link>
-              <Link to="/category" className="nav-links footerBasket ">
+              <Link to="/allproducts" className="nav-links footerBasket ">
               <CategoryRoundedIcon/>
               </Link>
               <Link to="/account" className="nav-links footerBasket ">

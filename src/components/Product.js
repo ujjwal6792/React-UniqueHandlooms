@@ -10,6 +10,7 @@ function Product({ id, title, image, price, rating,size }) {
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
+        Key:id,
         id: id,
         title: title,
         image: image,
@@ -31,18 +32,11 @@ function Product({ id, title, image, price, rating,size }) {
             <strong>{price}</strong>
           </p>
         </div>
-        {/* <div className="product__rating">
-          {Array(rating)
-            .fill()
-            .map((_, i) => (
-              <p>&#9733;</p>
-            ))}
-        </div> */}
       </div>
 
       <img src={image} alt="" />
 
-      <button onClick={addToBasket}>Add to Basket</button>
+      <button onClick={addToBasket}>Add to Cart</button>
     </div>
   );
 }

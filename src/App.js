@@ -14,6 +14,7 @@ import { useStateValue } from "./components/StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { AdminPanelSettings } from "@mui/icons-material";
+import Allproduct from "./components/Allproduct";
 
 const promise = loadStripe(
   "pk_test_51L1VGKSAA1y0OG767dnJldN2dLqf3sVagPzy5A15o7x1jYSBQ0rpRvT9sr31o0sP8mpP1pxsDhN6dzqVt2vOW7Oq00vKGDnUKg"
@@ -27,7 +28,6 @@ function App() {
   const [{}, dispatch] = useStateValue();
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-
       if (authUser) {
         dispatch({
           type: "SET_USER",
@@ -49,19 +49,20 @@ function App() {
       <Elements stripe={promise} element={[<Payment />]}>
         <div className="app">
           <Routes>
-          <Route path="/addproduct" element={<Admin />} />
+            <Route
+              path="/allproducts"
+              element={[<Allproduct />, <Footer />]}/>
+            <Route path="/addproduct" element={<Admin />} />
             <Route path="/login" element={[<Login />, <Footer />]} />
             <Route
               path="/payment"
-              element={[<Header />, <Payment />, <Footer />]}
-            />
+              element={[<Header />, <Payment />, <Footer />]}/>
             <Route
               path="/checkout"
-              element={[<Header />, <Checkout />, <Footer />]}
-            />
+              element={[<Header />, <Checkout />, <Footer />]}/>
             <Route
-              path="/"
-              element={[<Header />, <Welcome />,<Home />, <Footer />]}
+              path="/" exact
+              element={[<Header />, <Welcome />, <Home />, <Footer />]}
             />
           </Routes>
         </div>
