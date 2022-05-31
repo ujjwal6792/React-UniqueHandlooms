@@ -23,12 +23,11 @@ function Payment() {
     const [clientSecret, setClientSecret] = useState(true);
 
     useEffect(() => {
-        // generate the special stripe secret which allows us to charge a customer
+        // generate the special stripe secret
         const getClientSecret = async () => {
             const response = await axios({
                 method: 'post',
-                // Stripe expects the total in a currencies subunits
-                url: `/payments/create?total=${getBasketTotal(basket) * 100}`
+                url: `/payments/create?total=${getBasketTotal(basket) * 100}` 
             });
             setClientSecret(response.data.clientSecret)
         }
@@ -38,7 +37,7 @@ function Payment() {
 
 
     const handleSubmit = async (event) => {
-        // do all the fancy stripe stuff...
+        // stripe
         event.preventDefault();
         setProcessing(true);
 
@@ -68,14 +67,12 @@ function Payment() {
             })
 
             navigate('/orders', { replace: true });
-            // history.replace
         })
 
     }
 
     const handleChange = event => {
-        // Listen for changes in the CardElement
-        // and display any errors as the customer types their card details
+        // Listen for changes in the CardElement and display any errors as the customer types their card details
         setDisabled(event.empty);
         setError(event.error ? event.error.message : "");
     }
@@ -122,7 +119,7 @@ return (
             <h3>Payment Method</h3>
     </div>
     <div className="payment__details">
-  {/* Stripe magic will go */}
+  {/* Stripe rn, Gpay soon*/}
     <form onSubmit={handleSubmit}> 
         <CardElement onChange={handleChange}/> 
             <div className='payment__priceContainer'>
