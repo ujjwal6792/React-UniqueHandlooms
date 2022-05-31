@@ -9,75 +9,116 @@
   margin-right: auto;
   max-width: 1200px;
 }
-.home__image {
+.topBar {
+  position: fixed;
   width: 100%;
-  z-index: -1;
-  margin-bottom: 10px;
-  box-shadow: inset 10px 10px 64px 0px rgba(180, 180, 207, 0.75);
+  height: 80px;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 0px 0px 30px 0px;
+  background-image: linear-gradient(to top, #ececec 10%, white 90%);
+  z-index: 5;
 }
-.home__row {
+
+.topImage {
+  position: fixed;
+  top: 0;
+  left: 2rem;
+  height: 8vh;
+  margin: 10px auto;
+}
+
+.topBar h2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 8vh;
+  margin: 13px auto 10px auto;
+}
+
+.productRow .product {
+  width: 25%;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.productRow {
   max-width: 1200px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   z-index: 1;
+  margin-top: 7rem;
   margin-left: 10px;
   margin-right: 10px;
   row-gap: 30px;
 }
 
-.productTopBar {
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-  margin: auto 20px;
-}
-
-.productTopBar h2:last-child {
-  font-weight: 100;
-  color: gray;
-}
-
-.home__row .product {
-  width: 25%;
-  flex-direction: column;
-  margin-top: 10px;
+.allProductsBasket{
+  color: #273043;
+  text-decoration: none;
+  position: fixed;
+  top: 0;
+  right: 2rem;
+  height: 8vh;
+  margin: 26px auto 10px auto;
 }
 
 @media screen and (max-width: 960px) {
-  .home__row .product {
+  .productRow .product {
     height: auto;
   }
-  .home__row .product.image {
+  .productRow .product.image {
     width: 25%;
     flex-direction: column;
     margin-top: 10px;
   }
+
 }
 
 @media screen and (max-width: 720px) {
-  .home__row .product {
+  .productRow .product {
     height: auto;
     width: 35%;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .home__row .product {
+
+  .productRow .product {
     height: auto;
     width: 35%;
   }
+
+  .allProductsBasket{
+    display: none;
+  }
+
+  .topImage{
+    height: 3.5 rem;
+    left: 1rem;
+  }
+
+  .topBar h2 {
+    font-size: 1.2rem;
+    font-weight: 200;
+    position: fixed;
+    right: 1rem;
+    align-items: center;
+    height: 8vh;
+    margin: 13px auto 10px auto;
+  }
 }
 @media screen and (max-width: 420px) {
-  .home__row .product {
+  .productRow .product {
     height: auto;
     width: 34%;
   }
 }
 @media screen and (max-width: 400px) {
-  .home__row .product {
+  .productRow .product {
     height: auto;
     width: 90%;
   }

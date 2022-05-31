@@ -2,7 +2,7 @@
   background-image: linear-gradient(to top, #ececec 10%, white 90%);
   height: 80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
 }

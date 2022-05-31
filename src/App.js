@@ -13,7 +13,6 @@ import { auth } from "./components/firebase";
 import { useStateValue } from "./components/StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { AdminPanelSettings } from "@mui/icons-material";
 import Allproduct from "./components/Allproduct";
 
 const promise = loadStripe(
@@ -25,7 +24,8 @@ function App() {
   //   clientSecret:
   //     "{{sk_test_51L1VGKSAA1y0OG76PbZww8g7pZsj91G4tDe0k8iRxzU0gC1fY8QKQBUsMNgcnRTJdIwM0ue3iKGf9rNCH1Uaxpru008ilkAIfm}}",
   // };
-  const [{}, dispatch] = useStateValue();
+  const [{ basket }, dispatch] = useStateValue();
+  console.log(basket);
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
@@ -40,7 +40,7 @@ function App() {
         });
       }
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     // BEM
@@ -49,19 +49,25 @@ function App() {
       <Elements stripe={promise} element={[<Payment />]}>
         <div className="app">
           <Routes>
-            <Route
-              path="/allproducts"
-              element={[<Allproduct />, <Footer />]}/>
+            <Route path="/allproducts" element={[<Allproduct />, <Footer />]} />
+
             <Route path="/addproduct" element={<Admin />} />
+
             <Route path="/login" element={[<Login />, <Footer />]} />
+
             <Route
               path="/payment"
-              element={[<Header />, <Payment />, <Footer />]}/>
+              element={[<Header />, <Payment />, <Footer />]}
+            />
+
             <Route
               path="/checkout"
-              element={[<Header />, <Checkout />, <Footer />]}/>
+              element={[<Header />, <Checkout />, <Footer />]}
+            />
+
             <Route
-              path="/" exact
+              path="/"
+              exact
               element={[<Header />, <Welcome />, <Home />, <Footer />]}
             />
           </Routes>

@@ -1,11 +1,13 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import "../style/Allproduct.css";
 import Product from "./Product";
 import { useState, useEffect } from "react";
 import { db } from "./firebase";
 import { collection, getDocs } from "firebase/firestore";
+import Basket from "./Basket";
 
-import Hero from "../images/Hero.png";
+import Logo from "../images/Logo.png";
 
 function Allproduct() {
   const [products, setProducts] = useState([]);
@@ -20,12 +22,15 @@ function Allproduct() {
   return (
     <div className="home">
       <div className="home__container">
-        <img className="home__image" src={Hero} alt="" />
-        {/* <div className="productTopBar">
+        <div className="topBar">
+        <Link to="/"><img className="topImage" src={Logo} alt="" /></Link>
           <h2>New Collections</h2>
-          <h2 className="cursorPointer">filters</h2>
-        </div> */}
-        <div className="home__row">
+          <Link to="/checkout"
+          className="allProductsBasket">
+            <Basket />
+          </Link>
+        </div>
+        <div className="productRow">
          { (products.map((item)=>(
           <Product key={item.id}
             id={item.id}

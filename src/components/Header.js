@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "../style/Header.css";
 import SearchIcon from "@mui/icons-material/Search";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+// import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
 import Logo from "../images/Logo.png";
+import Basket from "./Basket";
 
 function Header() {
   const [{ basket, user }] = useStateValue();
@@ -73,8 +74,9 @@ function Header() {
                 className="nav-links header__optionBasket "
                 onClick={closeMobileMenu}
               >
-                <ShoppingBasketIcon />
-                <span className=" header__basketCount">{basket?.length}</span>
+                <Basket />
+                {/* <ShoppingBasketIcon />
+                <span className=" header__basketCount">{basket?.length}</span> */}
               </Link>
             </li>
         </ul>

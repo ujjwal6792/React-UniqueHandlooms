@@ -67,10 +67,6 @@
   color: #ffffff;
  border: 1px solid #273043;
  transition-duration: 200ms;
-  /* border-color: transparent;
-  border-radius: 10px;
-  background: #5ca2d5;
-  box-shadow: inset 1px 1px 3px #599dcf, inset -1px -1px 3px #5fa7db; */
 }
 
 .product > button:hover::before{

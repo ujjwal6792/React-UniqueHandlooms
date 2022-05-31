@@ -45,6 +45,7 @@ function Payment() {
             payment_method: {
                 card: elements.getElement(CardElement)
             }
+
         }).then(({ paymentIntent }) => {
             // paymentIntent = payment confirmation
             db
@@ -68,6 +69,7 @@ function Payment() {
 
             navigate('/orders', { replace: true });
         })
+        console.log(payload)
 
     }
 

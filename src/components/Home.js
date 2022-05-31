@@ -9,19 +9,27 @@ function Home() {
       {/* <div className="topLayout">
         <p>Starting at &#8377; 249</p>
       </div> */}
-      <div className="productContainer">
-        <img className="home__image" src={Hero} alt="" />
+        <div className="hero">
+          <img className="heroImage" src={Hero} alt="" />
+          <div className="heroText">
+            <h2>20% Discount</h2>
+            <p>On your first purchase</p>
+          </div>
+        </div>
+
         <div className="productTopBar">
-          <h2>New Collections</h2>
+          <h2>Our Collection</h2>
           <h2 className="cursorPointer">filters</h2>
         </div>
 
+      <div className="productContainer">
+
         <div className="productList">
-          <Link to="/allproducts" className="">
-            <button>All Products</button>
-          </Link>
         </div>
       </div>
+          <Link to="/allproducts" className="allProductsButton">
+            <button>All Products</button>
+          </Link>
     </div>
   );
 }

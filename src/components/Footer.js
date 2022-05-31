@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import "../style/Footer.css";
 import { useStateValue } from "./StateProvider";
 import { Link } from "react-router-dom";
-import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded';
+import Basket from "./Basket";
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import CategoryRoundedIcon from '@mui/icons-material/CategoryRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
 function Footer() {
-  const [{ basket, user }] = useStateValue();
-
   return (
     <footer>
         <div className="footer">
@@ -24,8 +22,7 @@ function Footer() {
                  <AccountCircleRoundedIcon/>
               </Link>
               <Link to="/checkout" className="nav-links footerBasket ">
-                <LocalGroceryStoreRoundedIcon/>
-                <span className=" footerBasketCount">{basket?.length}</span>
+                <Basket />
               </Link>
         </div>
     </footer>
