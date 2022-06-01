@@ -1,6 +1,6 @@
 .navbar {
   position: relative;
-  background-image: linear-gradient(to top, #ececec 10%, white 90%);
+  background-image: linear-gradient(to bottom, #ececec 10%, white 90%);
   height: 80px;
   display: flex;
   justify-content: space-between;

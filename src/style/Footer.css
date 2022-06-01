@@ -9,7 +9,7 @@ footer{
     /* position: relative;
     bottom: 0;
     left: 0; */
-    background: #ececec;
+    background-image: linear-gradient(to top, #ececec 10%, white 90%);
   }
 
 footer .content{
