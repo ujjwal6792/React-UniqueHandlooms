@@ -50,7 +50,9 @@ function Allproduct() {
   };
 
   if (products.length === 0) {
-    return <h1 className="justify-content-center"> Loading... </h1>;
+    return <div className="loaderContainer">
+      <div class="loader"></div>
+    </div>;
   }
   return (
     <div className="home">

@@ -75,8 +75,6 @@ function Header() {
                 onClick={closeMobileMenu}
               >
                 <Basket />
-                {/* <ShoppingBasketIcon />
-                <span className=" header__basketCount">{basket?.length}</span> */}
               </Link>
             </li>
         </ul>

@@ -1,4 +1,5 @@
 .navbar {
+  position: relative;
   background-image: linear-gradient(to top, #ececec 10%, white 90%);
   height: 80px;
   display: flex;
@@ -8,10 +9,12 @@
 }
 
 .header__logo {
-  width: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 70px;
   object-fit: contain;
-  margin: 0 20px;
-  margin-top: 3px;
+  margin: 5px 20px;
 }
 
 .nav-menu {
@@ -58,6 +61,7 @@
 }
 
 .header__optionBasket {
+  height: 70%;
   display: flex;
   align-items: center;
   color: #273043;
