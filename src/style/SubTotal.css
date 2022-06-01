@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 300px;
-  height: 100px;
+  height: fit-content;
   padding: 20px;
   background-image: linear-gradient(to top, #ececec 10%, white 90%);
   box-shadow: 1px -1px 10px #27304310, -1px 1px 10px #9197ae10;
@@ -24,7 +24,8 @@ Link {
 }
 .paymentbutton {
   display: inline-block;
-  padding: 12px 24px;
+  margin-top: 1rem;
+  padding: 6px 12px;
   border: 1px solid #4f4f4f;
   border-radius: 4px;
   transition: all 0.2s ease-in;

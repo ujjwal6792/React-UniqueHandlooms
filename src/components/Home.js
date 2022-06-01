@@ -1,6 +1,6 @@
 import React from "react";
 import "../style/Home.css";
-import Hero from "../images/Hero.png";
+import Hero from "../images/Hero.avif";
 import { Link } from "react-router-dom";
 
 function Home() {

@@ -5,7 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
-import Logo from "../images/Logo.png";
+import Logo from "../images/Logo.avif";
 import Basket from "./Basket";
 
 function Header() {

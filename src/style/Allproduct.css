@@ -11,13 +11,12 @@
 }
 .topBar {
   position: fixed;
+  left: 0;
   width: 100%;
   height: 80px;
-  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   text-align: center;
-  margin: 0px 0px 30px 0px;
   background-image: linear-gradient(to top, #ececec 10%, white 90%);
   z-index: 5;
 }
@@ -66,6 +65,32 @@
   margin: 26px auto 10px auto;
 }
 
+.paginate{
+  display: flex;
+  justify-content: center;
+}
+.paginate button{
+  background: transparent;
+  margin: 1rem;
+  display: inline-block;
+  padding: 5px 20px;
+  border: 1px solid #4f4f4f;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-size: 19px;
+  color: black;
+  z-index: 1;
+}
+
+.paginate button:hover{
+  background: #273043;
+  color: #ffffff;
+  border: 1px solid #273043;
+  transition-duration: 200ms;
+}
+
 @media screen and (max-width: 960px) {
   .productRow .product {
     height: auto;
@@ -86,6 +111,10 @@
 }
 
 @media screen and (max-width: 480px) {
+  
+  .topBar{
+    height: 100px;
+  }
 
   .productRow .product {
     height: auto;
@@ -114,7 +143,7 @@
 @media screen and (max-width: 420px) {
   .productRow .product {
     height: auto;
-    width: 34%;
+    width: 43%;
   }
 }
 @media screen and (max-width: 400px) {
