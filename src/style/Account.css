@@ -1,0 +1,74 @@
+.account {
+    background-color: #756d5e10;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,  minmax(400px, 1fr))
+}
+.accountDetails{
+    margin: 0 10px;
+    border: 2px solid #27304320;
+    border-radius: 5px;
+    color: #273043;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+
+.accountDetails p {
+    text-align: center;
+    font-weight: 500;
+}
+
+.accountDetails button{
+    margin: auto auto 0 auto;
+    width: clamp(300px, 400px, 85%) ;
+    color: #ececec;
+    background-color:#273043;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+.editAccount{
+    margin: 0 10px;
+    border: 2px solid #27304320;
+    border-radius: 5px;
+    color: #273043;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* text-align: center; */
+    padding: 1rem;
+}
+
+.editAccount form {
+    display: grid;
+    grid-template-columns: repeat(1, clamp(300px, 400px, 85%));
+    justify-content: center;
+    gap: 1rem;
+}
+
+.editAccount input {
+    color: #ececec;
+    background-color:#273043;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+.editAccount button{
+    color: #ececec;
+    background-color:#273043;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+.accountWish{
+    margin: 0 10px;
+    border: 2px solid #27304320;
+    border-radius: 5px;
+    color: #273043;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+}

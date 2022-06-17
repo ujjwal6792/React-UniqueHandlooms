@@ -19,10 +19,10 @@ function Footer() {
        <div className="lower">
          <div className="topic">Contact us</div>
          <div className="phone">
-           <p><i class="fas fa-phone-volume"></i>+91-8527708082</p>
+           <p><i className="fas fa-phone-volume"></i>+91-8527708082</p>
          </div>
          <div className="email">
-           <p><i class="fas fa-envelope"></i>uniquehandlooms.ghaziabad@gmail.com</p>
+           <p><i className="fas fa-envelope"></i>uniquehandlooms.ghaziabad@gmail.com</p>
          </div>
        </div>
      </div>
@@ -40,11 +40,11 @@ function Footer() {
          <input type="text" placeholder="Enter your query" />
          <button>Send</button>
          <div className="media-icons">
-           <a><i class="fab fa-facebook-f"></i></a>
-           <a><i class="fab fa-instagram"></i></a>
-           <a><i class="fab fa-twitter"></i></a>
-           <a><i class="fab fa-youtube"></i></a>
-           <a><i class="fab fa-linkedin-in"></i></a>
+           <a><i className="fab fa-facebook-f"></i></a>
+           <a><i className="fab fa-instagram"></i></a>
+           <a><i className="fab fa-twitter"></i></a>
+           <a><i className="fab fa-youtube"></i></a>
+           <a><i className="fab fa-linkedin-in"></i></a>
          </div>
        </form>
      </div>

@@ -22,15 +22,7 @@ function Login() {
 
   const register = (e) => {
     e.preventDefault();
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((auth) => {
-        // sucessfully created a new user with email and password
-        if (auth) {
-          navigate("/");
-        }
-      })
-      .catch((error) => alert(error.message));
+    navigate("/register")
   };
   return (
     <div className="login">

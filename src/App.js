@@ -14,6 +14,8 @@ import { useStateValue } from "./components/StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Allproduct from "./components/Allproduct";
+import Account from "./components/Account";
+import Register from "./components/Register";
 
 const promise = loadStripe(
   "pk_test_51L1VGKSAA1y0OG767dnJldN2dLqf3sVagPzy5A15o7x1jYSBQ0rpRvT9sr31o0sP8mpP1pxsDhN6dzqVt2vOW7Oq00vKGDnUKg"
@@ -25,7 +27,6 @@ function App() {
   //     "{{sk_test_51L1VGKSAA1y0OG76PbZww8g7pZsj91G4tDe0k8iRxzU0gC1fY8QKQBUsMNgcnRTJdIwM0ue3iKGf9rNCH1Uaxpru008ilkAIfm}}",
   // };
   const [{ basket }, dispatch] = useStateValue();
-  console.log(basket);
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
@@ -49,6 +50,10 @@ function App() {
       <Elements stripe={promise} element={[<Payment />]}>
         <div className="app">
           <Routes>
+            <Route path="/register" element={[<Register />, <Footer />]} />
+
+            <Route path="/account" element={[<Header/>, <Account />, <Footer />]} />
+
             <Route path="/allproducts" element={[<Allproduct />, <Footer />]} />
 
             <Route path="/addproduct" element={<Admin />} />

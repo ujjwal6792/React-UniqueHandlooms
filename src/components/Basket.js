@@ -4,7 +4,6 @@ import { useStateValue } from "./StateProvider";
 
 function Basket() {
     const [{ basket, user }] = useStateValue();
-    console.log(user)
     return (
     <div>
 
