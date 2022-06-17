@@ -4,7 +4,11 @@ import firebase from "./firebase";
 import { useStateValue } from "./StateProvider";
 import "../style/Account.css"
 import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+
+
 function Account() {
+  const navigate = useNavigate();
   const [{ basket, user }] = useStateValue();
     const [updateDetails, setUpdateDetails] = useState(null)
     const [uid, setUid] = useState(null)
@@ -24,7 +28,7 @@ function Account() {
               collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
             );
           });
-    }, [])
+    }, [updateDetailsComplete])
 
     const submitUserDetails = (e)=>{
         e.preventDefault();
@@ -46,14 +50,12 @@ function Account() {
               }, 3000);    
         })
     }
-
-
-
+  if (user){
   return (
     <div className="account">
     {userDetail?.map((item) => (
+    (item.id == uid) &&
     <div className="accountDetails">
-         {console.log(item.firstname)}
          <h4>Your Account Details</h4>
           <p>{`${item.firstname} ${item.surname}`}</p>
           <p>{item.phone}</p>
@@ -67,10 +69,10 @@ function Account() {
         (<div className="editAccount">
             <h4>Update Your Account</h4>
             <form action="account">
-                <input type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} placeholder='Name'/>
-                <input type="text" value={surname} onChange={(e) => setSurname(e.target.value)} placeholder='Name'/>
+                <input type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} placeholder='First Name'/>
+                <input type="text" value={surname} onChange={(e) => setSurname(e.target.value)} placeholder='Last Name'/>
                 <input type="number" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Phone number'/>
-                <input type="text"  onChange={(e) => setEmail(e.target.value)} placeholder='Email Address'/>
+                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email Address'/>
                 <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder='Address'/>
                 <button type='submit' onClick={submitUserDetails}> {updateDetailsComplete? updateDetailsComplete:  `Update Info`}</button>
             </form>
@@ -81,7 +83,10 @@ function Account() {
             <h4>Your Query List</h4>
         </div>
     </div>
-  )
+    )
+  } else {
+        navigate("/login")
+  }
 }
 
 export default Account

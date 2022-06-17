@@ -45,7 +45,7 @@ function Register() {
             value={firstname}
             onChange={(e) => setFirstName(e.target.value)}
           />
-           <h5>Surname</h5>
+           <h5>Last name</h5>
           <input
             type="text"
             value={surname}
