@@ -86,3 +86,10 @@
   font-weight: 500;
   color: #273043;
 }
+
+@media screen and (max-width: 480px) {
+  .login__container{
+    margin-top: 15vh;
+   width: clamp(300px, 80%, 350px);
+  }
+}

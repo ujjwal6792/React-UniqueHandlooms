@@ -7,7 +7,7 @@ function Basket() {
     return (
     <div>
 
-     <LocalGroceryStoreRoundedIcon/>
+<img src="https://img.icons8.com/external-aficons-studio-basic-outline-aficons-studio/64/undefined/external-like-user-interface-aficons-studio-basic-outline-aficons-studio.png"/>
     <span className=" footerBasketCount">{basket?.length}</span>
 
     </div>

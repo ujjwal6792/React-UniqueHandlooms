@@ -55,16 +55,16 @@ function Footer() {
       {/* mobile */}
       <div className="footer">
         <Link to="/" className="footerItems ">
-          <HomeRoundedIcon />
+        <img src="https://img.icons8.com/external-aficons-studio-basic-outline-aficons-studio/64/undefined/external-home-user-interface-aficons-studio-basic-outline-aficons-studio.png"/>
         </Link>
         <Link to="/allproducts" className="footerItems ">
-          <CategoryRoundedIcon />
+        <img src="https://img.icons8.com/external-aficons-studio-basic-outline-aficons-studio/64/undefined/external-add-user-interface-aficons-studio-basic-outline-aficons-studio.png"/>
         </Link>
         <Link to="/account" className="footerItems ">
-          <AccountCircleRoundedIcon />
+        <img src="https://img.icons8.com/external-aficons-studio-basic-outline-aficons-studio/64/undefined/external-user-user-interface-aficons-studio-basic-outline-aficons-studio.png"/>
         </Link>
         <Link to="/checkout" className="footerItems ">
-          <Basket />
+        <Basket/>
         </Link>
       </div>
     </footer>
