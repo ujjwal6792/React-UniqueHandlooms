@@ -59,12 +59,9 @@
 .menu-icon {
   display: none;
 }
-
-.header__optionBasket {
-  height: 70%;
-  display: flex;
-  align-items: center;
-  color: #273043;
+.header__optionBasket img {
+  height: 1.8rem;
+  padding-bottom: .5rem;
 }
 
 .header__basketCount {

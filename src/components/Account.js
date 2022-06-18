@@ -81,6 +81,15 @@ function Account() {
         }
         <div className="accountWish">
             <h4>Your Query List</h4>
+            {basket.map(item => (
+              <div>
+             <div> {item.id} </div>
+              <div> {item.title} </div>
+              <div> {item.image} </div>
+              <div>  {item.price} </div>
+              <div> {item.rating} </div>
+              </div>
+          ))}
         </div>
     </div>
     )

@@ -10,7 +10,6 @@ function Checkout() {
   return (
     <div className="checkout">
       <div className="checkoutLeft">
-          {/* <img className="checkoutAd" src="" alt="" /> */}
         <div>
           <h3>Hello{user? `, ${user.email}` : ', Guest'}</h3>
           <h2 className="checkoutTitle">Your shopping Basket</h2>

@@ -26,7 +26,7 @@ Link {
   display: inline-block;
   margin-top: 1rem;
   padding: 6px 12px;
-  border: 1px solid #4f4f4f;
+  border: 2px solid #4f4f4f;
   border-radius: 4px;
   transition: all 0.2s ease-in;
   position: relative;
@@ -53,7 +53,7 @@ Link {
 
 .paymentbutton:hover{
   color: #ffffff;
- border: 1px solid #273043;
+ border: 2px solid #273043;
 }
 
 .paymentbutton:hover::before{

@@ -51,7 +51,7 @@ function Allproduct() {
 
   if (products.length === 0) {
     return <div className="loaderContainer">
-      <div class="loader"></div>
+      <div className="loader"></div>
     </div>;
   }
   return (
