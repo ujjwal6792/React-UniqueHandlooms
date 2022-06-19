@@ -34,10 +34,10 @@ const reducer = (state, action) => {
         basket: newBasket,
       };
 
-        case "USER_DETAILS":  
+    case "USER_DETAILS":  
       return{
         ...state,
-        userDetailsContext: [...state.userDetailsContext, action.details]
+        userDetailsContext:[action.details]
       }
     
     case "SET_USER":

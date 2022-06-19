@@ -5,6 +5,7 @@ import { useStateValue } from "./StateProvider";
 import "../style/Account.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {doc, getDoc} from "firebase/firestore"
 
 function Account() {
   const navigate = useNavigate();
@@ -21,39 +22,31 @@ function Account() {
   const userRef = firebase.firestore().collection("users");
 
   useEffect(() => {
-    setUid(user?.uid);
-    userRef.get().then(async(collections) => {
-     await setUserDetail(
-        collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      );
-      console.log(userDetail)
-      const  setUserState =()=>{
-        userDetail?.map(
-          (item) =>
-            item.id == uid && (
-              dispatch({
-                type: "USER_DETAILS",
-                details: {
-                  firstname:item.firstname ,
-                  surname:item.surname ,
-                  address:item.address ,
-                  phone:item.phone ,
-                  email:item.email,
-                },
-              })
-            )
-        )
-          }
-        setUserState()
-    }
+    if (user) {
+   const userRef = doc(db, "users", user.uid)
+    getDoc(userRef)
+      .then(
+        (doc)=>{
+         const userDetails = {...doc.data(), id: doc.id}
 
-    );
-  }, [updateDetailsComplete]);
+            dispatch({
+              type: "USER_DETAILS",
+              details: {
+                firstname: userDetails.firstname,
+                surname: userDetails.surname,
+                address: userDetails.address,
+                phone: userDetails.phone,
+                email: userDetails.email,
+              },
+            });}
+      );
+    }
+  },[userDetailsContext]);
 
   const submitUserDetails = (e) => {
     e.preventDefault();
     db.collection("users")
-      .doc(uid)
+      .doc(user.uid)
       .set({
         firstname,
         surname,
@@ -74,19 +67,21 @@ function Account() {
       });
   };
 
-
   if (user) {
     return (
       <div className="account">
-            { userDetailsContext&& <div className="accountDetails">
-                <h4>Your Account Details</h4>
-                <p id="userName">{`${ userDetailsContext[0]?.firstname} ${ userDetailsContext[0]?.surname}`}</p>
-                <p id="userPhone">{ userDetailsContext[0]?.phone}</p>
-                <p id="userEmail">{ userDetailsContext[0]?.email}</p>
-                <p id="userAddress"> { userDetailsContext[0]?.address} </p>
-                <button onClick={()=>setUpdateDetails(true)}>Update My Details</button>
-              </div>
-  }
+        {userDetailsContext && (
+          <div className="accountDetails">
+            <h4>Your Account Details</h4>
+            <p id="userName">{`${userDetailsContext[0]?.firstname} ${userDetailsContext[0]?.surname}`}</p>
+            <p id="userPhone">{userDetailsContext[0]?.phone}</p>
+            <p id="userEmail">{userDetailsContext[0]?.email}</p>
+            <p id="userAddress"> {userDetailsContext[0]?.address} </p>
+            <button onClick={() => setUpdateDetails(true)}>
+              Update My Details
+            </button>
+          </div>
+        )}
         {updateDetails ? (
           <div className="editAccount">
             <h4>Update Your Account</h4>
