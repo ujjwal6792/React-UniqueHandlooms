@@ -9,7 +9,7 @@ import Logo from "../images/Logo.avif";
 import Basket from "./Basket";
 
 function Header() {
-  const [{ basket, user }] = useStateValue();
+  const [{ basket, user, userDetailsContext }] = useStateValue();
   const handleAuthenticaton = () => {
     if (user) {
       auth.signOut();
@@ -55,8 +55,9 @@ function Header() {
                 className="nav-links username"
                 onClick={closeMobileMenu}
               >
+           
                 Hello
-                {!user ? ` Guest` : ` ${user.email}`}
+                {!user ? ` Guest` : ` ${userDetailsContext[0]?.firstname}`}
               </Link>
               </li>
             <li className="nav-item"  >

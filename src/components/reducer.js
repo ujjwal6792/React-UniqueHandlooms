@@ -1,6 +1,7 @@
 export const initialState = {
   basket: [],
   user: null,
+  userDetailsContext:[],
 };
 
 // Selector
@@ -33,12 +34,20 @@ const reducer = (state, action) => {
         basket: newBasket,
       };
 
+        case "USER_DETAILS":  
+      return{
+        ...state,
+        userDetailsContext: [ action.details]
+      }
+    
     case "SET_USER":
       return {
         ...state,
         user: action.user,
       };
-      
+    
+
+
     default:
       return state;
   }
