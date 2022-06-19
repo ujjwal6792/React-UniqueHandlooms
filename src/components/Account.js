@@ -22,10 +22,11 @@ function Account() {
 
   useEffect(() => {
     setUid(user?.uid);
-    userRef.get().then((collections) => {
-      setUserDetail(
+    userRef.get().then(async(collections) => {
+     await setUserDetail(
         collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
       );
+      console.log(userDetail)
       const  setUserState =()=>{
         userDetail?.map(
           (item) =>
@@ -77,15 +78,15 @@ function Account() {
   if (user) {
     return (
       <div className="account">
-              <div className="accountDetails">
+            { userDetailsContext&& <div className="accountDetails">
                 <h4>Your Account Details</h4>
-                <p id="userName">{`${ userDetailsContext[0].firstname} ${ userDetailsContext[0].surname}`}</p>
-                <p id="userPhone">{ userDetailsContext[0].phone}</p>
-                <p id="userEmail">{ userDetailsContext[0].email}</p>
-                <p id="userAddress"> { userDetailsContext[0].address} </p>
+                <p id="userName">{`${ userDetailsContext[0]?.firstname} ${ userDetailsContext[0]?.surname}`}</p>
+                <p id="userPhone">{ userDetailsContext[0]?.phone}</p>
+                <p id="userEmail">{ userDetailsContext[0]?.email}</p>
+                <p id="userAddress"> { userDetailsContext[0]?.address} </p>
                 <button onClick={()=>setUpdateDetails(true)}>Update My Details</button>
               </div>
-
+  }
         {updateDetails ? (
           <div className="editAccount">
             <h4>Update Your Account</h4>

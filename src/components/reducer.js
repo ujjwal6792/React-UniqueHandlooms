@@ -37,7 +37,7 @@ const reducer = (state, action) => {
         case "USER_DETAILS":  
       return{
         ...state,
-        userDetailsContext: [ action.details]
+        userDetailsContext: [...state.userDetailsContext, action.details]
       }
     
     case "SET_USER":
