@@ -43,6 +43,14 @@ function Account() {
     }
   },[userDetailsContext]);
 
+  useEffect(()=>{
+    setFirstname(userDetailsContext[0].firstname)
+    setSurname(userDetailsContext[0].surname)
+    setEmail(userDetailsContext[0].email)
+    setPhone(userDetailsContext[0].phone)
+    setAddress(userDetailsContext[0].address)
+  },[updateDetails])
+
   const submitUserDetails = (e) => {
     e.preventDefault();
     db.collection("users")
@@ -63,6 +71,7 @@ function Account() {
         setEmail("");
         setTimeout(() => {
           setUpdateDetailsComplete("");
+          setUpdateDetails(false)
         }, 3000);
       });
   };
@@ -77,7 +86,7 @@ function Account() {
             <p id="userPhone">{userDetailsContext[0]?.phone}</p>
             <p id="userEmail">{userDetailsContext[0]?.email}</p>
             <p id="userAddress"> {userDetailsContext[0]?.address} </p>
-            <button onClick={() => setUpdateDetails(true)}>
+            <button onClick={() => setUpdateDetails( !updateDetails? true: false)}>
               Update My Details
             </button>
           </div>
