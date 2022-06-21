@@ -1,5 +1,5 @@
 .account {
-    background-color: #756d5e10;
+    background-color: #756d5e05;
     margin: 3rem 0rem;
     display: grid;
     grid-template-columns: repeat(auto-fit,  minmax(400px, 1fr))
@@ -68,7 +68,8 @@
 .accountWish{
     margin: 0 10px;
     /* border: 2px solid #27304320; */
-    border-radius: 5px;
+    background: #fff;
+    border-radius: 16px;
     color: #273043;
     display: flex;
     flex-direction: column;

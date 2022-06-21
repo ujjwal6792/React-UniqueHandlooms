@@ -19,7 +19,7 @@
 
 .nav-menu {
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(6, auto);
   grid-gap: 10px;
   list-style: none;
   text-align: center;
@@ -69,7 +69,7 @@
   margin-right: 10px;
 }
 
-.X {
+.nav-back{
   display: none;
 }
 
@@ -83,12 +83,16 @@
     height: fit-content;
     padding-bottom: 1rem;
     display: flex;
-    justify-content: left;
     align-items: center;
     font-size: 1.2rem;
   }
-
+  .nav-back{
+    display: block;
+  }
   .nav-menu {
+    padding-top: 20vh;
+    padding-bottom: 15vh;
+    font-size: 2.8rem;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -99,8 +103,8 @@
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 5;
-    justify-content: center;
-    align-items: center;
+    justify-content:flex-start;
+    align-items:flex-start;
   }
 
   .nav-menu.active {
@@ -112,33 +116,15 @@
 
   }
 
-  .X {
-    margin-top: 1rem;
-    display: block;
-
-  }
-  .x {
-    border-radius: 4px;
-    border: none;
-    background-color: #3d405b;
-    width: fit-content;
-    padding: 0 10px;
-    cursor: pointer;
-    padding: 5px 10px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #ffffff;
-  }
-
 .userauth {
+  font-size: 2.5rem;
     border-radius: 4px;
     background-color: #3d405b;
     border: none;
     color: #ffffff;
-    text-align: center;
-    font-size: 17px;
+    text-align: left;
     padding: 16px;
-    width: 130px;
+    width: 40Vw;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
