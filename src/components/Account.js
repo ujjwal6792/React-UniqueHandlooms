@@ -22,9 +22,12 @@ function Account() {
   const [wishlistRender, setWishlistRender] = useState(null);
   const [showWishlist, setShowWishlist] = useState(false);
 
-  const wishlistRef = firebase.firestore().collection(`users`).doc(user?.uid).collection('wishlist');
-
-
+  const wishlistRef = firebase
+    .firestore()
+    .collection(`users`)
+    .doc(user?.uid)
+    .collection("wishlist")
+    .orderBy("date", "desc");
 
   useEffect(() => {
     if (user) {
@@ -105,8 +108,8 @@ function Account() {
   };
 
   const showUserWishlist = () => {
-    setShowWishlist(true);
-    console.log(wishlistRender)
+    setShowWishlist(!showWishlist ? true : false);
+    console.log(wishlistRender);
   };
 
   if (user) {
@@ -173,12 +176,13 @@ function Account() {
           <div className="accountWishBar">
             <h4>Your WishList</h4>
             <button onClick={showUserWishlist}>
-            <img src="https://img.icons8.com/external-aficons-studio-basic-outline-aficons-studio/64/000000/external-add-user-interface-aficons-studio-basic-outline-aficons-studio.png"/>
+              <img src="https://img.icons8.com/external-aficons-studio-basic-outline-aficons-studio/64/000000/external-add-user-interface-aficons-studio-basic-outline-aficons-studio.png" />
             </button>
           </div>
-          {wishlistRender?.map((item) => (
-          <WishlistDisplay basket={item.basket} id={item.id}/>
-            )) }
+          {showWishlist &&
+            wishlistRender?.map((item) => (
+              <WishlistDisplay basket={item.basket} id={item.id} />
+            ))}
         </div>
       </div>
     );

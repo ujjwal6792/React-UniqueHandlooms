@@ -10,20 +10,29 @@ import { db } from "./firebase";
 function ConfirmWishlist() {
   const [{ basket, user, userDetailsContext }, dispatch] = useStateValue();
   const navigate = useNavigate();
-
+  const [submitProcess, setSubmitProcess] = useStateValue(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
 
-    db.collection('users').doc(user?.uid).collection('wishlist')
-      .add({
+    const date = new Date();
+    const ISToffSet = 330;
+    const offset= ISToffSet*60*1000;
+    const ISTTime = new Date(date.getTime()+offset);
+    const Timename = ISTTime.toString()
+
+    e.preventDefault();
+    setSubmitProcess(true)
+    db.collection('users').doc(user?.uid).collection('wishlist').doc(Timename)
+      .set({
+        date:  Timename,
         basket: basket,
       })
       .then(() => {
         dispatch({
           type: "RESET_BASKET",
-          details: [],
+          basket: [],
         });
+        setSubmitProcess(false)
         navigate("/account");
       }).catch((err) => {   console.log(err)});
   };
@@ -45,7 +54,6 @@ function ConfirmWishlist() {
             <p></p>
           </div>
         </div>
-        {console.log(basket) }
         <div className="payment__section">
           <div className="payment__title">
             <h3>Review items</h3>
@@ -83,7 +91,7 @@ function ConfirmWishlist() {
                   prefix={"₹​"}
                 />
                 <button type="submit">
-                  <span>Add Now</span>
+                  <span>{submitProcess? `Add Now`: `Processing...`}</span>
                 </button>
               </div>
             </form>

@@ -172,4 +172,9 @@ footer .content{
 .footerItems img{
   width: 30px;
 }
+
+.footerItems img:last-child {
+  width: 27px;
+}
+
 }

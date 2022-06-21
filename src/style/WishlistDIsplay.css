@@ -1,18 +1,41 @@
 .wishlistDisplay {
+  position: relative;
   display: flex;
   overflow: scroll;
-  padding-left: 1.5rem;
+  padding: 1rem 0rem 1.5rem 6.5rem;
   gap: 1.5rem;
   height: 100%;
     margin-bottom: 1.5rem;
   border-radius: 16px;
+  background: linear-gradient(90deg, rgba(39,48,67,1) 0%, rgba(255,255,255,1) 30%);
     box-shadow: 1px -1px 10px #27304310, -1px 1px 10px #9197ae10;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
 .wishlistDisplay::-webkit-scrollbar {
-  visibility: hidden;
+  display: none;
+}
+
+.innerTime {
+  font-size: 1.2rem;
+  font-weight: 500;
+position: absolute;
+top: 50%;
+left: 5%;
+}
+
+.innerDate {
+  font-size: 1.2rem;
+  font-weight: 500;
+position: absolute;
+top: 50%;
+left: 10%;
+}
+
+.rotate {  
+  color: #fff;
+  transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
 }
 
 .hiddenButton{

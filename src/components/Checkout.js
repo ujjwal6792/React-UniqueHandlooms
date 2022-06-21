@@ -12,17 +12,17 @@ function Checkout() {
       <div className="checkoutLeft">
         <div>
           <h3>
-            Hello{user ? `, ${userDetailsContext[0]?.firstname} ${userDetailsContext[0]?.surname}` : ", Guest"}
+            Hello{user? `, ${userDetailsContext[0]?.firstname} ${userDetailsContext[0]?.surname}` : ", Guest"}
           </h3>
           <h2 className="checkoutTitle">Your shopping Basket</h2>
 
           {basket.map((item) => (
             <CheckoutProduct
-              id={item.id}
-              title={item.title}
-              image={item.image}
-              price={item.price}
-              rating={item.rating}
+              id={item?.id}
+              title={item?.title}
+              image={item?.image}
+              price={item?.price}
+              rating={item?.rating}
             />
           ))}
         </div>

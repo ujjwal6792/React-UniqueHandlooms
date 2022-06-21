@@ -15,7 +15,7 @@ const reducer = (state, action) => {
     case "RESET_BASKET":
       return {
         ...state,
-        basket: [action.item],
+        basket: [],
       };
 
 
