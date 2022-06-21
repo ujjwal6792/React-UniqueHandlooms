@@ -52,6 +52,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.user,
+        userUid: action.user?.uid,
       };
     
 

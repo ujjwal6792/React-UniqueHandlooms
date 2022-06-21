@@ -1,0 +1,21 @@
+.wishlistDisplay {
+  display: flex;
+  overflow: scroll;
+  padding-left: 1.5rem;
+  gap: 1.5rem;
+  height: 100%;
+    margin-bottom: 1.5rem;
+  border-radius: 16px;
+    box-shadow: 1px -1px 10px #27304310, -1px 1px 10px #9197ae10;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.wishlistDisplay::-webkit-scrollbar {
+  visibility: hidden;
+}
+
+.hiddenButton{
+    display: none
+;
+}

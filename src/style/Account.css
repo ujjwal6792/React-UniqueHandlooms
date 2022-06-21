@@ -64,11 +64,31 @@
 
 .accountWish{
     margin: 0 10px;
-    border: 2px solid #27304320;
+    /* border: 2px solid #27304320; */
     border-radius: 5px;
     color: #273043;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding: 1rem;
+}
+
+.accountWishBar{
+    display: flex;
+    justify-content: space-between;
+}
+.accountWishBar h4{
+    display: flex;
+    justify-content: center;
+}
+.accountWishBar button {
+    padding-right: .4rem;
+    background: transparent;
+    border: transparent;
+    display: flex;
+    align-items: top;
+}
+
+.accountWishBar button img {
+    width: 1.8rem;
 }

@@ -5,69 +5,26 @@ import CheckoutProduct from "./CheckoutProduct";
 import { Link, useNavigate } from "react-router-dom";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "./reducer";
-import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
 function ConfirmWishlist() {
   const [{ basket, user, userDetailsContext }, dispatch] = useStateValue();
   const navigate = useNavigate();
-  const [basketItems, setBasketItems] = useState(null);
-  const [success, setSuccess] = useState(false);
 
-  const [bsId, setBsId] = useState(null);
-  const [bsTitle, setBsTitle] = useState(null);
-  const [bsPrice, setBsPrice] = useState(null);
-  const [bsSize, setBsSize] = useState(null);
-  useEffect(() => {
-    if(basket.length > 0) {
-    const wishlistId = basket.map((item) => {
-      const id = [item.id].reduce((acc, item) => acc+" "+ item) ;
-      return id
-    });
-    const wishlistName = basket.map((item) => {
-        const name = [item.title].reduce((acc, item) => acc+" "+ item) ;
-        return name
-      });
-
-      const wishlistSize = basket.map((item) => {
-        const size = [item.size].reduce((acc, item) => acc+" "+ item) ;
-        return size
-      });
-
-      const wishlistPrice = basket.map((item) => {
-        const price = [item.price].reduce((acc, item) => acc+" "+ item) ;
-        return price
-      });
- 
-    setBsId(wishlistId.reduce((acc, item) => acc+" "+ item))
-    setBsTitle(wishlistName.reduce((acc, item) => acc+" , "+ item))
-    setBsSize(wishlistSize.reduce((acc, item) => acc+"  "+ item))
-    setBsPrice(wishlistPrice.reduce((acc, item) => acc+"  "+ item))
-      }
-  }, [basket, success]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    db.collection(user.uid)
+    db.collection('users').doc(user?.uid).collection('wishlist')
       .add({
-        ProductId: bsId,
-        ProductName: bsTitle,
-        ProductSize: bsSize,
-        ProductPrice: bsPrice,
-        UserName: userDetailsContext[0].firstname,
-        UserAddress: userDetailsContext[0].address,
-        UserEmail: userDetailsContext[0].email,
-        UserPhone: userDetailsContext[0].phone,
+        basket: basket,
       })
       .then(() => {
         dispatch({
           type: "RESET_BASKET",
           details: [],
         });
-        setSuccess(true);
         navigate("/account");
-        window.location.reload()
       }).catch((err) => {   console.log(err)});
   };
 

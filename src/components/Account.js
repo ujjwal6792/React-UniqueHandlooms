@@ -6,13 +6,13 @@ import "../style/Account.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc, deleteDoc } from "firebase/firestore";
-import CheckoutProduct from "./CheckoutProduct";
+import WishlistDisplay from "./WishlistDisplay";
 
 function Account() {
   const navigate = useNavigate();
-  const [{ basket, user, userDetailsContext }, dispatch] = useStateValue();
+  const [{ basket, user, userUid, userDetailsContext }, dispatch] =
+    useStateValue();
   const [updateDetails, setUpdateDetails] = useState(null);
-  const [uid, setUid] = useState(null);
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
   const [address, setAddress] = useState("");
@@ -20,11 +20,15 @@ function Account() {
   const [email, setEmail] = useState("");
   const [updateDetailsComplete, setUpdateDetailsComplete] = useState("");
   const [wishlistRender, setWishlistRender] = useState(null);
-  const userRef = firebase.firestore().collection("users");
+  const [showWishlist, setShowWishlist] = useState(false);
+
+  const wishlistRef = firebase.firestore().collection(`users`).doc(user?.uid).collection('wishlist');
+
+
 
   useEffect(() => {
     if (user) {
-      const userRef = doc(db, "users", user.uid);
+      const userRef = doc(db, "users", user?.uid);
       getDoc(userRef).then((doc) => {
         const userDetails = { ...doc.data(), id: doc.id };
 
@@ -40,39 +44,51 @@ function Account() {
         });
       });
     }
-  }, [userDetailsContext]);
+  }, []);
 
   useEffect(() => {
-    setFirstname(userDetailsContext[0].firstname);
-    setSurname(userDetailsContext[0].surname);
-    setEmail(userDetailsContext[0].email);
-    setPhone(userDetailsContext[0].phone);
-    setAddress(userDetailsContext[0].address);
+    setFirstname(userDetailsContext[0]?.firstname);
+    setSurname(userDetailsContext[0]?.surname);
+    setEmail(userDetailsContext[0]?.email);
+    setPhone(userDetailsContext[0]?.phone);
+    setAddress(userDetailsContext[0]?.address);
+    wishlistRef
+      .get()
+      .then((collections) => {
+        return collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      })
+      .then((res) => {
+        setWishlistRender(res);
+      });
   }, [updateDetails]);
 
   const submitUserDetails = (e) => {
     e.preventDefault();
-    db.collection("users")
-      .doc(user.uid)
-      .update({
-        firstname,
-        surname,
-        address,
-        phone,
-        email,
-      })
-      .then(() => {
-        setUpdateDetailsComplete("your details have been updated successfully");
-        setFirstname("");
-        setSurname("");
-        setAddress("");
-        setPhone("");
-        setEmail("");
-        setTimeout(() => {
-          setUpdateDetailsComplete("");
-          setUpdateDetails(false);
-        }, 3000);
-      });
+    if (userUid) {
+      db.collection("users")
+        .doc(userUid)
+        .update({
+          firstname,
+          surname,
+          address,
+          phone,
+          email,
+        })
+        .then(() => {
+          setUpdateDetailsComplete(
+            "your details have been updated successfully"
+          );
+          setFirstname("");
+          setSurname("");
+          setAddress("");
+          setPhone("");
+          setEmail("");
+          setTimeout(() => {
+            setUpdateDetailsComplete("");
+            setUpdateDetails(false);
+          }, 3000);
+        });
+    }
   };
 
   // Delete wishlist
@@ -88,14 +104,10 @@ function Account() {
     }
   };
 
-  const wishlistRef = firebase.firestore().collection(user.uid);
-  useEffect(() => {
-    wishlistRef.get().then((collections) => {
-      setWishlistRender(
-        collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      );
-    });
-  });
+  const showUserWishlist = () => {
+    setShowWishlist(true);
+    console.log(wishlistRender)
+  };
 
   if (user) {
     return (
@@ -158,17 +170,15 @@ function Account() {
           ""
         )}
         <div className="accountWish">
-          <h4>Your WishList</h4>
-          {wishlistRef.map((item) => (
-            <CheckoutProduct
-              key={item.id}
-              id={item.id}
-              title={item.Title}
-              price={item.Price}
-              image={item.Img}
-              size={item.Size}
-            />
-          ))}
+          <div className="accountWishBar">
+            <h4>Your WishList</h4>
+            <button onClick={showUserWishlist}>
+            <img src="https://img.icons8.com/external-aficons-studio-basic-outline-aficons-studio/64/000000/external-add-user-interface-aficons-studio-basic-outline-aficons-studio.png"/>
+            </button>
+          </div>
+          {wishlistRender?.map((item) => (
+          <WishlistDisplay basket={item.basket} id={item.id}/>
+            )) }
         </div>
       </div>
     );
