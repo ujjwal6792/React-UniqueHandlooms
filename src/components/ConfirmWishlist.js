@@ -15,10 +15,8 @@ function ConfirmWishlist() {
   const handleSubmit = (e) => {
 
     const date = new Date();
-    const ISToffSet = 330;
-    const offset= ISToffSet*60*1000;
-    const ISTTime = new Date(date.getTime()+offset);
-    const Timename = ISTTime.toString()
+    const Timename = date.toString()
+
 
     e.preventDefault();
     setSubmitProcess(true)
