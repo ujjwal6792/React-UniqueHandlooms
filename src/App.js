@@ -6,7 +6,6 @@ import Welcome from "./components/Welcome";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Checkout from "./components/Checkout";
-import Payment from "./components/Payment";
 import Footer from "./components/Footer";
 import Admin from "./components/Admin";
 import { db, auth } from "./components/firebase";
@@ -16,6 +15,7 @@ import { useStateValue } from "./components/StateProvider";
 import Allproduct from "./components/Allproduct";
 import Account from "./components/Account";
 import Register from "./components/Register";
+import ConfirmWishlist from "./components/ConfirmWishlist";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -67,6 +67,9 @@ useEffect(() => {
       
         <div className="app">
           <Routes>
+
+          <Route path="/confirmwishlist" element={[<Header/>, <ConfirmWishlist />, <Footer />]} />
+            
             <Route path="/register" element={[<Register />, <Footer />]} />
 
             <Route path="/account" element={[<Header/>, <Account />, <Footer />]} />
@@ -76,11 +79,6 @@ useEffect(() => {
             <Route path="/addproduct" element={<Admin />} />
 
             <Route path="/login" element={[<Login />, <Footer />]} />
-
-            <Route
-              path="/payment"
-              element={[<Header />, <Payment />, <Footer />]}
-            />
 
             <Route
               path="/checkout"

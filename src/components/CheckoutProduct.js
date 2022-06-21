@@ -14,7 +14,7 @@ function CheckoutProduct({ id, image, title, price, hideButton, size }) {
     }
 
     return (
-        <div className='checkoutProduct'>
+        <div className='checkoutProduct' key={id}>
             <img className='checkoutProduct__image' src={image} alt='' />
 
             <div className='checkoutProduct__info'>

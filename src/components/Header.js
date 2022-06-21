@@ -42,11 +42,11 @@ function Header() {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/contact"
+                  to="/allproducts"
                   className="nav-links mob2"
                   onClick={closeMobileMenu}
                 >
-                  Contact
+                  Products
                 </Link>
               </li>
               <li className="nav-item">

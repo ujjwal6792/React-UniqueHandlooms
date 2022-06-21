@@ -16,9 +16,9 @@ function Subtotal() {
             <p>
               Subtotal ( {basket.length} items): <strong>{value}</strong>
             </p>
-            <small className="subtotalGift">
+            {/* <small className="subtotalGift">
               <input type="checkbox" /> This order contains a gift
-            </small>
+            </small> */}
           </>
         )}
         decimalScale={2}
@@ -27,8 +27,8 @@ function Subtotal() {
         thousandSeparator={true}
         prefix={	`₹​` }
       />
-      <Link to ="/payment">
-      <button className="paymentbutton">Proceed to Checkout</button>
+      <Link to ="/confirmWishlist">
+      <button className="paymentbutton">Add to Wishlist</button>
       </Link>
     </div>
   );

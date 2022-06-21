@@ -5,16 +5,18 @@ import { useStateValue } from "./StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
 
 function Checkout() {
-  const [{ basket, user }] = useStateValue();
+  const [{ basket,user, userDetailsContext }] = useStateValue();
 
   return (
     <div className="checkout">
       <div className="checkoutLeft">
         <div>
-          <h3>Hello{user? `, ${user.email}` : ', Guest'}</h3>
+          <h3>
+            Hello{user ? `, ${userDetailsContext[0]?.firstname} ${userDetailsContext[0]?.surname}` : ", Guest"}
+          </h3>
           <h2 className="checkoutTitle">Your shopping Basket</h2>
 
-          {basket.map(item => (
+          {basket.map((item) => (
             <CheckoutProduct
               id={item.id}
               title={item.title}
@@ -23,7 +25,6 @@ function Checkout() {
               rating={item.rating}
             />
           ))}
-
         </div>
       </div>
 
@@ -33,6 +34,5 @@ function Checkout() {
     </div>
   );
 }
-
 
 export default Checkout;
