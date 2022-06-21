@@ -49,9 +49,8 @@ function ConfirmWishlist() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    db.collection("userwishlist")
-      .doc(user.uid)
-      .set({
+    db.collection(user.uid)
+      .add({
         ProductId: bsId,
         ProductName: bsTitle,
         ProductSize: bsSize,

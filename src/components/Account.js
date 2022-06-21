@@ -47,7 +47,7 @@ function Account() {
     e.preventDefault();
     db.collection("users")
       .doc(user.uid)
-      .set({
+      .update({
         firstname,
         surname,
         address,
@@ -126,7 +126,7 @@ function Account() {
           ""
         )}
         <div className="accountWish">
-          <h4>Your Query List</h4>
+          <h4>Your WishList</h4>
           {basket.map((item) => (
             <div>
               <div> {item.id} </div>
