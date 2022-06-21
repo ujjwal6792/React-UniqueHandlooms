@@ -5,7 +5,8 @@ import { useStateValue } from "./StateProvider";
 import "../style/Account.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {doc, getDoc} from "firebase/firestore"
+import { doc, getDoc, deleteDoc } from "firebase/firestore";
+import CheckoutProduct from "./CheckoutProduct";
 
 function Account() {
   const navigate = useNavigate();
@@ -18,38 +19,36 @@ function Account() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [updateDetailsComplete, setUpdateDetailsComplete] = useState("");
-  const [userDetail, setUserDetail] = useState(null);
+  const [wishlistRender, setWishlistRender] = useState(null);
   const userRef = firebase.firestore().collection("users");
 
   useEffect(() => {
     if (user) {
-   const userRef = doc(db, "users", user.uid)
-    getDoc(userRef)
-      .then(
-        (doc)=>{
-         const userDetails = {...doc.data(), id: doc.id}
+      const userRef = doc(db, "users", user.uid);
+      getDoc(userRef).then((doc) => {
+        const userDetails = { ...doc.data(), id: doc.id };
 
-            dispatch({
-              type: "USER_DETAILS",
-              details: {
-                firstname: userDetails.firstname,
-                surname: userDetails.surname,
-                address: userDetails.address,
-                phone: userDetails.phone,
-                email: userDetails.email,
-              },
-            });}
-      );
+        dispatch({
+          type: "USER_DETAILS",
+          details: {
+            firstname: userDetails.firstname,
+            surname: userDetails.surname,
+            address: userDetails.address,
+            phone: userDetails.phone,
+            email: userDetails.email,
+          },
+        });
+      });
     }
-  },[userDetailsContext]);
+  }, [userDetailsContext]);
 
-  useEffect(()=>{
-    setFirstname(userDetailsContext[0].firstname)
-    setSurname(userDetailsContext[0].surname)
-    setEmail(userDetailsContext[0].email)
-    setPhone(userDetailsContext[0].phone)
-    setAddress(userDetailsContext[0].address)
-  },[updateDetails])
+  useEffect(() => {
+    setFirstname(userDetailsContext[0].firstname);
+    setSurname(userDetailsContext[0].surname);
+    setEmail(userDetailsContext[0].email);
+    setPhone(userDetailsContext[0].phone);
+    setAddress(userDetailsContext[0].address);
+  }, [updateDetails]);
 
   const submitUserDetails = (e) => {
     e.preventDefault();
@@ -71,10 +70,32 @@ function Account() {
         setEmail("");
         setTimeout(() => {
           setUpdateDetailsComplete("");
-          setUpdateDetails(false)
+          setUpdateDetails(false);
         }, 3000);
       });
   };
+
+  // Delete wishlist
+  const deleteWishlist = (e, id) => {
+    e.preventDefault();
+    const deleteRef = doc(db, user.uid, id);
+    if (window.confirm("Are you sure?")) {
+      deleteDoc(deleteRef);
+      // setSucess("Website Deleted");
+      setTimeout(() => {
+        // setWishlistRender("");
+      }, 5000);
+    }
+  };
+
+  const wishlistRef = firebase.firestore().collection(user.uid);
+  useEffect(() => {
+    wishlistRef.get().then((collections) => {
+      setWishlistRender(
+        collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
+    });
+  });
 
   if (user) {
     return (
@@ -86,8 +107,10 @@ function Account() {
             <p id="userPhone">{userDetailsContext[0]?.phone}</p>
             <p id="userEmail">{userDetailsContext[0]?.email}</p>
             <p id="userAddress"> {userDetailsContext[0]?.address} </p>
-            <button onClick={() => setUpdateDetails( !updateDetails? true: false)}>
-              Update My Details
+            <button
+              onClick={() => setUpdateDetails(!updateDetails ? true : false)}
+            >
+              {!updateDetails ? "Update My Details" : "close"}
             </button>
           </div>
         )}
@@ -136,14 +159,15 @@ function Account() {
         )}
         <div className="accountWish">
           <h4>Your WishList</h4>
-          {basket.map((item) => (
-            <div>
-              <div> {item.id} </div>
-              <div> {item.title} </div>
-              <div> {item.image} </div>
-              <div> {item.price} </div>
-              <div> {item.rating} </div>
-            </div>
+          {wishlistRef.map((item) => (
+            <CheckoutProduct
+              key={item.id}
+              id={item.id}
+              title={item.Title}
+              price={item.Price}
+              image={item.Img}
+              size={item.Size}
+            />
           ))}
         </div>
       </div>
