@@ -30,60 +30,67 @@ function Header() {
         </div>
 
         <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item ">
-                <Link to="" className="nav-links nav-back " onClick={closeMobileMenu}>
-                  Back
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/" className="nav-links mob1" onClick={closeMobileMenu}>
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/allproducts"
-                  className="nav-links mob2"
-                  onClick={closeMobileMenu}
-                >
-                  Products
-                </Link>
-              </li>
-              <li className="nav-item">
-              <Link
-                to={user? "/account" : !user && "/login"  }
-                className="nav-links username"
-                onClick={closeMobileMenu}
-              >
-           
-                Hello
-                {!user ? ` Guest` : ` ${userDetailsContext[0]?.firstname}`}
-              </Link>
-              </li>
-            <li className="nav-item"  >
-              <Link
-                to={!user && "/login"}
-                className="nav-links userauth"
-                onClick={handleAuthenticaton} 
-              >
-                {user ? "Sign Out" : "Sign In"}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/checkout"
-                className="nav-links header__optionBasket "
-                onClick={closeMobileMenu}
-              >
-                <Basket />
-              </Link>
-            </li>
+          <li className="nav-item ">
+            <Link
+              to=""
+              className="nav-links nav-back "
+              onClick={closeMobileMenu}
+            >
+              Back
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/" className="nav-links mob1" onClick={closeMobileMenu}>
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/allproducts"
+              className="nav-links mob2"
+              onClick={closeMobileMenu}
+            >
+              Products
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to={user ? "/account" : !user && "/login"}
+              className="nav-links username"
+              onClick={closeMobileMenu}
+            >
+              Hello
+              {!user
+                ? ` Guest`
+                : userDetailsContext == null
+                ? ` Loading`
+                : userDetailsContext == undefined
+                ? ` Loading`
+                : ` ${userDetailsContext[0]?.firstname}`}
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to={!user && "/login"}
+              className="nav-links userauth"
+              onClick={handleAuthenticaton}
+            >
+              {user ? "Sign Out" : "Sign In"}
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/checkout"
+              className="nav-links header__optionBasket "
+              onClick={closeMobileMenu}
+            >
+              <Basket />
+            </Link>
+          </li>
         </ul>
-       
       </nav>
     </>
   );
-
 }
 
 export default Header;

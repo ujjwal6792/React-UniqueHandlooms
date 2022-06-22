@@ -92,7 +92,7 @@
   .nav-menu {
     padding-top: 20vh;
     padding-bottom: 15vh;
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -117,14 +117,14 @@
   }
 
 .userauth {
-  font-size: 2.5rem;
+  font-size: 2rem;
     border-radius: 4px;
     background-color: #3d405b;
     border: none;
     color: #ffffff;
     text-align: left;
     padding: 16px;
-    width: 40Vw;
+    min-width: 40Vw;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;

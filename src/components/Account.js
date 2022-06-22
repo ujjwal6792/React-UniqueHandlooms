@@ -187,7 +187,7 @@ function Account() {
       </div>
     );
   } else {
-    navigate("/login");
+    <p>login</p>
   }
 }
 
