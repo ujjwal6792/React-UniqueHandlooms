@@ -16,13 +16,16 @@ function WishlistDisplay({ basket, id }) {
       const deleteRef = db.collection("users").doc(user?.uid).collection("wishlist").doc(id);
       if (window.confirm("Are you sure?")) {
         deleteRef.delete().then(
-          dispatch({
-            type: "WISHLIST_UPDATE",
-            details: {
-              wishlistUpdating: 1
-            }
-          }
-          ))
+      // setTimeout(() => {
+      //     dispatch({
+      //       type: "WISHLIST_UPDATE",
+      //       details: {
+      //         wishlistUpdating: 1
+      //       }
+      //     }
+      //     )
+      //   }, 200)
+      );
         // setSucess("Website Deleted");
         setTimeout(() => {
           // setWishlistRender("");
@@ -36,8 +39,8 @@ function WishlistDisplay({ basket, id }) {
       <p className="innerTime rotate">{time} </p>
       <p className="innerDate rotate"> {date}</p>
       {basket?.map((item, i) => (
-        <div className="wishlistProduct" key={item.id + i}>
-          <CheckoutProduct
+        <div className="wishlistProduct" key={id +i}>
+          <CheckoutProduct key={id +i +i }
             id={item.id}
             title={item.title}
             image={item.image}

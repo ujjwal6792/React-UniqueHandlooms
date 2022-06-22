@@ -62,9 +62,8 @@ function Account() {
       return collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     })
     .then((res) => {
-      setTimeout(() => {
         setWishlistRender(res);
-      }, 100);
+
     });
   },[wishlistUpdating, showWishlist])
 
@@ -170,7 +169,7 @@ function Account() {
           </div>
           {showWishlist &&
             wishlistRender?.map((item) => (
-              <WishlistDisplay basket={item.basket} id={item.id} />
+              <WishlistDisplay key={item.id.slice(16,40)} basket={item.basket} id={item.id} />
             ))}
         </div>
       </div>
