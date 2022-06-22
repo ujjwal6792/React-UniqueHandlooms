@@ -4,13 +4,11 @@ import firebase from "./firebase";
 import { useStateValue } from "./StateProvider";
 import "../style/Account.css";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { doc, getDoc, deleteDoc } from "firebase/firestore";
 import WishlistDisplay from "./WishlistDisplay";
 
 function Account() {
-  const navigate = useNavigate();
-  const [{ basket, user, userUid, userDetailsContext }, dispatch] =
+  const [{ user, userUid, userDetailsContext, wishlistUpdating }, dispatch] =
     useStateValue();
   const [updateDetails, setUpdateDetails] = useState(null);
   const [firstname, setFirstname] = useState("");
@@ -55,15 +53,20 @@ function Account() {
     setEmail(userDetailsContext[0]?.email);
     setPhone(userDetailsContext[0]?.phone);
     setAddress(userDetailsContext[0]?.address);
-    wishlistRef
-      .get()
-      .then((collections) => {
-        return collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-      })
-      .then((res) => {
-        setWishlistRender(res);
-      });
   }, [updateDetails]);
+
+  useEffect(() => {
+    wishlistRef
+    .get()
+    .then((collections) => {
+      return collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    })
+    .then((res) => {
+      setTimeout(() => {
+        setWishlistRender(res);
+      }, 100);
+    });
+  },[wishlistUpdating, showWishlist])
 
   const submitUserDetails = (e) => {
     e.preventDefault();
@@ -94,22 +97,8 @@ function Account() {
     }
   };
 
-  // Delete wishlist
-  const deleteWishlist = (e, id) => {
-    e.preventDefault();
-    const deleteRef = doc(db, user.uid, id);
-    if (window.confirm("Are you sure?")) {
-      deleteDoc(deleteRef);
-      // setSucess("Website Deleted");
-      setTimeout(() => {
-        // setWishlistRender("");
-      }, 5000);
-    }
-  };
-
   const showUserWishlist = () => {
     setShowWishlist(!showWishlist ? true : false);
-    console.log(wishlistRender);
   };
 
   if (user) {

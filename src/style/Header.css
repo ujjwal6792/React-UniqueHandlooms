@@ -158,5 +158,9 @@
     font-size: 2rem;
   }
 }
-
+@media screen and (max-width: 480px) {
+  .userauth {
+    min-width: 50vw;
+  }
+}
 

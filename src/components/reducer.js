@@ -2,6 +2,7 @@ export const initialState = {
   basket: [],
   user: null,
   userDetailsContext:[],
+  wishlistUpdating:0,
 };
 
 // Selector
@@ -17,7 +18,6 @@ const reducer = (state, action) => {
         ...state,
         basket: [],
       };
-
 
     case "ADD_TO_BASKET":
       return {
@@ -55,6 +55,11 @@ const reducer = (state, action) => {
         userUid: action.user?.uid,
       };
     
+      case "WISHLIST_UPDATE":
+        return {
+          wishlistUpdating: [state.wishlistUpdating + action.Number]
+        };
+
 
 
     default:
