@@ -1,7 +1,6 @@
 import React from "react";
 import CheckoutProduct from "./CheckoutProduct";
 import { useStateValue } from "./StateProvider";
-// import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import "../style/WishlistDIsplay.css";
 
@@ -15,23 +14,8 @@ function WishlistDisplay({ basket, id }) {
       e.preventDefault();
       const deleteRef = db.collection("users").doc(user?.uid).collection("wishlist").doc(id);
       if (window.confirm("Are you sure?")) {
-        deleteRef.delete().then(
-      // setTimeout(() => {
-      //     dispatch({
-      //       type: "WISHLIST_UPDATE",
-      //       details: {
-      //         wishlistUpdating: 1
-      //       }
-      //     }
-      //     )
-      //   }, 200)
-      );
-        // setSucess("Website Deleted");
-        setTimeout(() => {
-          // setWishlistRender("");
-        }, 5000);
-      }
-    };
+        deleteRef.delete()
+    }};
   
 
   return (

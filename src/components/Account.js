@@ -57,14 +57,9 @@ function Account() {
 
   useEffect(() => {
     wishlistRef
-    .get()
-    .then((collections) => {
-      return collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    .onSnapshot((collections) => {
+      return setWishlistRender(collections.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     })
-    .then((res) => {
-        setWishlistRender(res);
-
-    });
   },[wishlistUpdating, showWishlist])
 
   const submitUserDetails = (e) => {
