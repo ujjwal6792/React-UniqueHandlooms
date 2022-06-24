@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../style/Payment.css";
 import { useStateValue } from "./StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
@@ -10,16 +10,13 @@ import { db } from "./firebase";
 function ConfirmWishlist() {
   const [{ basket, user, userDetailsContext }, dispatch] = useStateValue();
   const navigate = useNavigate();
-  const [submitProcess, setSubmitProcess] = useStateValue(false);
+  const [submitProcess, setSubmitProcess] = useState(false);
 
   const handleSubmit = (e) => {
 
     const date = new Date();
     const Timename = date.toString()
-
-
     e.preventDefault();
-
     if (user){
     setSubmitProcess(true)
     db.collection('users').doc(user?.uid).collection('wishlist').doc(Timename)
@@ -92,7 +89,7 @@ function ConfirmWishlist() {
                   prefix={"₹​"}
                 />
                 <button type="submit">
-                  <span>{submitProcess? `Add Now`: `Processing...`}</span>
+                  <span>{!submitProcess? `Add Now`: `Processing...`}</span>
                 </button>
               </div>
             </form>

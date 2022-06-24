@@ -16,10 +16,9 @@ function WishlistDisplay({ basket, id }) {
       if (window.confirm("Are you sure?")) {
         deleteRef.delete()
     }};
-  
 
   return (
-    <div className="wishlistDisplay" key={id}>
+    <div className="wishlistDisplay" key={id} >
       <p className="innerTime rotate">{time} </p>
       <p className="innerDate rotate"> {date}</p>
       {basket?.map((item, i) => (

@@ -78,12 +78,12 @@
   margin: 1rem;
   display: inline-block;
   padding: 5px 20px;
-  border: 1px solid #4f4f4f;
+  border: 2px solid #4f4f4f;
   border-radius: 4px;
   transition: all 0.2s ease-in;
   position: relative;
   overflow: hidden;
-  font-size: 19px;
+  font-size: 1.2rem;
   color: black;
   z-index: 1;
 }
@@ -91,7 +91,7 @@
 .paginate button:hover{
   background: #273043;
   color: #ffffff;
-  border: 1px solid #273043;
+  border: 2px solid #273043;
   transition-duration: 200ms;
 }
 .loaderContainer{

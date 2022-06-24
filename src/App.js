@@ -16,6 +16,8 @@ import Allproduct from "./components/Allproduct";
 import Account from "./components/Account";
 import Register from "./components/Register";
 import ConfirmWishlist from "./components/ConfirmWishlist";
+import HomepageRouting from "./pages/HomepageRouting";
+import IndianAttire from "./pages/IndianAttire";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -67,6 +69,8 @@ useEffect(() => {
       
         <div className="app">
           <Routes>
+
+          <Route path="/IndianAttire" element={[<Header/>,<HomepageRouting/>, <IndianAttire />, <Footer />]} />
 
           <Route path="/confirmwishlist" element={[<Header/>, <ConfirmWishlist />, <Footer />]} />
             

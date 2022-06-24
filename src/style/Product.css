@@ -1,5 +1,6 @@
 .product {
-  font-size: .8rem;
+  font-weight: 500;
+  font-size: 1.2rem;
   border-color: transparent;
   color: #273043;
   display: flex;
@@ -7,8 +8,8 @@
   justify-content: flex-start;
   margin: 10px;
   padding: 20px;
-  max-height: 400px;
-  min-width: 100px;
+  max-height: 450px;
+  min-width: 300px;
   background-image: linear-gradient(to top, #ececec 10%, white 90%);
   border-radius: 16px;
   box-shadow: 1px -1px 10px #27304310, -1px 1px 10px #9197ae10;
@@ -42,7 +43,8 @@
 }
 
 .product > button {
-  font-size: .8rem;
+  height: fit-content;
+  font-size: 1.2rem;
   display: inline-block;
   padding: 6px 12px;
   border: 2px solid #4f4f4f;
@@ -50,7 +52,6 @@
   transition: all 0.2s ease-in;
   position: relative;
   overflow: hidden;
-  font-size: 19px;
   color: black;
   z-index: 1;
 }
