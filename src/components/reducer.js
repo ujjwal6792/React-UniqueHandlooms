@@ -55,11 +55,6 @@ const reducer = (state, action) => {
         userUid: action.user?.uid,
       };
     
-      case "WISHLIST_UPDATE":
-        return {
-          wishlistUpdating: [state.wishlistUpdating + action.Number]
-        };
-
 
 
     default:

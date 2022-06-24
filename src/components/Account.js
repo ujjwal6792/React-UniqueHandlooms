@@ -4,11 +4,11 @@ import firebase from "./firebase";
 import { useStateValue } from "./StateProvider";
 import "../style/Account.css";
 import { useEffect } from "react";
-import { doc, getDoc, deleteDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import WishlistDisplay from "./WishlistDisplay";
 
 function Account() {
-  const [{ user, userUid, userDetailsContext, wishlistUpdating }, dispatch] =
+  const [{ user, userUid, userDetailsContext }, dispatch] =
     useStateValue();
   const [updateDetails, setUpdateDetails] = useState(null);
   const [firstname, setFirstname] = useState("");
@@ -18,7 +18,7 @@ function Account() {
   const [email, setEmail] = useState("");
   const [updateDetailsComplete, setUpdateDetailsComplete] = useState("");
   const [wishlistRender, setWishlistRender] = useState(null);
-  const [showWishlist, setShowWishlist] = useState(false);
+  const [showWishlist, setShowWishlist] = useState(true);
 
   const wishlistRef = firebase
     .firestore()
@@ -60,7 +60,7 @@ function Account() {
     .onSnapshot((collections) => {
       return setWishlistRender(collections.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     })
-  },[wishlistUpdating, showWishlist])
+  },[showWishlist])
 
   const submitUserDetails = (e) => {
     e.preventDefault();

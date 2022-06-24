@@ -36,6 +36,11 @@
   margin-bottom: 15px;
 }
 
+.product >img:hover {
+  transform: scale(120%);
+  transition-duration: 300ms;
+}
+
 .product > button {
   font-size: .8rem;
   display: inline-block;
@@ -67,7 +72,7 @@
 
 .product > button:hover {
   color: #ffffff;
- border: 1px solid #273043;
+ border: 2px solid #273043;
  transition-duration: 200ms;
 }
 
@@ -89,7 +94,7 @@ height: 10vh;
 .product__info .product__title {
   height: 7vh;
   padding-bottom: 10px;
-  border-bottom: 1px solid  #27304350;
+  border-bottom: 2px solid  #27304350;
 }
 @media screen and (max-width: 960px) {
   .product > img {

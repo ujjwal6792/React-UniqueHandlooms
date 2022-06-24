@@ -19,6 +19,8 @@ function ConfirmWishlist() {
 
 
     e.preventDefault();
+
+    if (user){
     setSubmitProcess(true)
     db.collection('users').doc(user?.uid).collection('wishlist').doc(Timename)
       .set({
@@ -30,9 +32,10 @@ function ConfirmWishlist() {
           type: "RESET_BASKET",
           basket: [],
         });
-        setSubmitProcess(false)
         navigate("/account");
+        setSubmitProcess(false)
       }).catch((err) => {   console.log(err)});
+    }else(alert("You need to login/signUp"))
   };
 
   return (

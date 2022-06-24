@@ -79,6 +79,7 @@ footer .content{
     color:  #273043;
   }
   footer .content .media-icons a{
+    cursor: pointer;
     font-size: 10px;
     height: 35px;
     width: 35px;

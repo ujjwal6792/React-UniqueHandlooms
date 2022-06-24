@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import "../style/Header.css";
-import SearchIcon from "@mui/icons-material/Search";
-// import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
 import Logo from "../images/Logo.avif";
 import Basket from "./Basket";
 
 function Header() {
-  const [{ basket, user, userDetailsContext }] = useStateValue();
+  const [{ user, userDetailsContext }] = useStateValue();
   const handleAuthenticaton = () => {
     if (user) {
       auth.signOut();
@@ -75,7 +73,7 @@ function Header() {
               className="nav-links userauth"
               onClick={handleAuthenticaton}
             >
-              {user ? "Sign Out" : "Sign In"}
+              {user ? "Sign out" : "Sign up" }
             </Link>
           </li>
           <li className="nav-item">

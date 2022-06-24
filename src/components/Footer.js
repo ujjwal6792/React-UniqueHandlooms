@@ -1,13 +1,12 @@
 import React from "react";
 import "../style/Footer.css";
-import { useStateValue } from "./StateProvider";
 import { Link } from "react-router-dom";
 import Basket from "./Basket";
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
-import CategoryRoundedIcon from "@mui/icons-material/CategoryRounded";
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 
 function Footer() {
+  const date = new Date()
+  const year = date.toString().slice(11,16)
+
   return (
     <footer>
        <div className="content">
@@ -50,7 +49,7 @@ function Footer() {
      </div>
    </div>
    <div className="bottom">
-     <p>Copyright © 2022 <a>Unique Handlooms</a></p>
+     <p>Copyright © {year} <a>Unique Handlooms</a></p>
    </div>
       {/* mobile */}
       <div className="footer">
