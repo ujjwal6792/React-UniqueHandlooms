@@ -16,7 +16,6 @@ import Allproduct from "./components/Allproduct";
 import Account from "./components/Account";
 import Register from "./components/Register";
 import ConfirmWishlist from "./components/ConfirmWishlist";
-import HomepageRouting from "./pages/HomepageRouting";
 import IndianAttire from "./pages/IndianAttire";
 
 function App() {
@@ -70,7 +69,7 @@ useEffect(() => {
         <div className="app">
           <Routes>
 
-          <Route path="/IndianAttire" element={[<Header/>,<HomepageRouting/>, <IndianAttire />, <Footer />]} />
+          <Route path="/IndianAttire" element={[<Header/>, <IndianAttire />, <Footer />]} />
 
           <Route path="/confirmwishlist" element={[<Header/>, <ConfirmWishlist />, <Footer />]} />
             
@@ -80,7 +79,7 @@ useEffect(() => {
 
             <Route path="/allproducts" element={[<Allproduct />, <Footer />]} />
 
-            <Route path="/addproduct" element={<Admin />} />
+            <Route path="/admin" element={[<Header />, <Admin />, <Footer />]} />
 
             <Route path="/login" element={[<Login />, <Footer />]} />
 

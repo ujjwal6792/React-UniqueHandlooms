@@ -12,8 +12,7 @@ function Allproduct() {
   const [lastProducts, setlastProducts] = useState();
   const productRef = firebase
     .firestore()
-    .collection("Products")
-    .orderBy("Name", "asc");
+    .collection("products")
 
   useEffect(() => {
     productRef
@@ -49,11 +48,11 @@ function Allproduct() {
       });
   };
 
-  if (products.length === 0) {
-    return <div className="loaderContainer">
-      <div className="loader"></div>
-    </div>;
-  }
+  // if (products.length === 0) {
+  //   return <div className="loaderContainer">
+  //     <div className="loader"></div>
+  //   </div>;
+  // }
   return (
     <div className="home">
       <div className="home__container">
@@ -71,11 +70,11 @@ function Allproduct() {
             <Product
               key={item.id}
               id={item.id}
-              title={item.Name}
-              price={item.Price}
-              rating={5}
-              image={item.Img}
-              size={item.Size}
+              title={item.name}
+              price={item.price}
+              description={item.description}
+              image={item.img}
+              size={item.size}
             />
           ))}
         </div>
