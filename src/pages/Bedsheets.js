@@ -48,6 +48,12 @@ function Bedsheets() {
         });
     };
 
+    if (products.length === 0) {
+      return <div className="loaderContainer">
+        <div className="loader"></div>
+      </div>;
+    }
+
   return (
     <div className="pages">
     <div className="home__container">

@@ -48,11 +48,11 @@ function Allproduct() {
       });
   };
 
-  // if (products.length === 0) {
-  //   return <div className="loaderContainer">
-  //     <div className="loader"></div>
-  //   </div>;
-  // }
+  if (products.length === 0) {
+    return <div className="loaderContainer">
+      <div className="loader"></div>
+    </div>;
+  }
   return (
     <div className="home">
       <div className="home__container">

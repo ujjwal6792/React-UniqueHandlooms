@@ -47,6 +47,12 @@ function IndianAttire() {
           );
         });
     };
+  
+    if (products.length === 0) {
+      return <div className="loaderContainer">
+        <div className="loader"></div>
+      </div>;
+    } 
 
   return (
     
