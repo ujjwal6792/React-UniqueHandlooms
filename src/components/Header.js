@@ -23,8 +23,11 @@ function Header() {
         <Link to="/" onClick={closeMobileMenu}>
           <img className="header__logo" src={Logo} alt="logo" />
         </Link>
-        <div className="menu-icon" onClick={handleClick}>
-          <i className={click ? "fas fa-times" : "fas fa-bars"} />
+        <div className={click? "hidden": "menu-icon"} onClick={handleClick}>
+          {/* <img src="https://img.icons8.com/material-rounded/96/000000/menu--v3.png"/> */}
+          {/* <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-menu-web-flaticons-lineal-color-flat-icons.png"/> */}
+          <img src="https://img.icons8.com/external-bluetone-bomsymbols-/91/000000/external-hamburger-menu-digital-design-bluetone-set-2-bluetone-bomsymbols-.png"/>
+          
         </div>
 
         <ul className={click ? "nav-menu active" : "nav-menu"}>

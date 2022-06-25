@@ -146,10 +146,10 @@
   .menu-icon {
     display: block;
     position: absolute;
-    top: 0;
-    left: 3rem;
-    transform: translate(-100%, 60%);
-    font-size: 2rem;
+    top: 1rem;
+    left: -0.4rem;
+    transform: scale(45%);
+    filter: brightness(30%);
     cursor: pointer;
   }
 
@@ -164,3 +164,6 @@
   }
 }
 
+.hidden{
+  display: none;
+}

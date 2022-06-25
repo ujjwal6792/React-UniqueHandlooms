@@ -6,9 +6,9 @@ footer{
     font-size: .8rem;
     margin-top: 2rem;
     width: 100%;
-    /* position: relative;
+    position: relative;
     bottom: 0;
-    left: 0; */
+    left: 0;
     background-image: linear-gradient(to top, #ececec 10%, white 90%);
   }
 
@@ -17,7 +17,6 @@ footer .content{
     margin: auto;
     padding: 20px 20px 0px 20px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
   }
   footer .content p,a{
@@ -125,20 +124,8 @@ footer .content{
     }
   }  
 
-@media (max-width:560px){
-    footer{
-      position: relative;
-    }
-    footer .content .box{
-      width: 100%;
-      margin-top: 30px;
-    }
-    footer .content .middle{
-      padding-left: 0;
-    }
-  } 
-  
-@media screen and (max-width: 480px) {
+
+@media screen and (max-width: 720px) {
    footer .content{
         display: none;
     }
