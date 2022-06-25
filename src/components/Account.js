@@ -36,6 +36,7 @@ function Account() {
 
   useEffect(() => {
     if (user) {
+      console.log(userDetailsContext)
       userRef.onSnapshot((doc) => {
         const userDetails = { ...doc.data(), id: doc.id };
 

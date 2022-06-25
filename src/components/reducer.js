@@ -1,7 +1,13 @@
 export const initialState = {
   basket: [],
   user: null,
-  userDetailsContext:[],
+  userDetailsContext:[{
+    firstname: "Guest",
+    surname: "",
+    address: "",
+    phone:"",
+    email: "",
+  }],
   wishlistUpdating:0,
 };
 
