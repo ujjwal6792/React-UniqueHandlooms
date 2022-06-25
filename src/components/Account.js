@@ -6,8 +6,10 @@ import "../style/Account.css";
 import { useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import WishlistDisplay from "./WishlistDisplay";
+import { useNavigate } from "react-router-dom";
 
 function Account() {
+  const Navigate = useNavigate()
   const [{ user, userUid, userDetailsContext }, dispatch] =
     useStateValue();
   const [updateDetails, setUpdateDetails] = useState(null);
@@ -94,8 +96,13 @@ function Account() {
   const showUserWishlist = () => {
     setShowWishlist(!showWishlist ? true : false);
   };
-
-  if (user) {
+  if (!user){
+    Navigate("/login")
+  }
+  else if (user?.uid == "AJC1CI0AfxPrZFIy2ojl8JCSLs63"){
+    Navigate('/admin')
+  }
+  else if (user) {
     return (
       <div className="account">
         {userDetailsContext && (

@@ -14,7 +14,7 @@ function Home() {
   const navigate = useNavigate()
   const navigateIA = () => navigate("/IndianAttire")
   const navigateBedsheet = () => navigate("/Bedsheets")
-  const navigateCarpetsandMats = () => navigate("/CarpetsandMats")
+  const navigateCarpetsandMats = () => navigate("/Carpetsandmats")
   const navigateCushions = () => navigate("/Cushions")
   const navigateTowels = () => navigate("/Towels")
   const navigateMattress = () => navigate("/Mattress")

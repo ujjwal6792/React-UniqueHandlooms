@@ -325,7 +325,7 @@ function Admin() {
             <option value="carpets">carpets</option>
             <option value="cushions">cushions</option>
             <option value="towels">towels</option>
-            <option value="topDeals">mattress</option>
+            <option value="mattress">mattress</option>
           </select>
           <button type="submit">
             {" "}

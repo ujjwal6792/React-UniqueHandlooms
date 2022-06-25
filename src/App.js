@@ -17,6 +17,12 @@ import Account from "./components/Account";
 import Register from "./components/Register";
 import ConfirmWishlist from "./components/ConfirmWishlist";
 import IndianAttire from "./pages/IndianAttire";
+import Bedsheets from "./pages/Bedsheets";
+import Carpetsandmats from "./pages/Carpetsandmats";
+import Cushions from "./pages/Cushions";
+import Mattress from "./pages/Mattress";
+import Towels from "./pages/Towels";
+
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -68,6 +74,16 @@ useEffect(() => {
       
         <div className="app">
           <Routes>
+          <Route path="/Towels" element={[<Header/>, <Towels />, <Footer />]} />  
+
+
+          <Route path="/Mattress" element={[<Header/>, <Mattress />, <Footer />]} />  
+          
+          <Route path="/Cushions" element={[<Header/>, <Cushions />, <Footer />]} />  
+
+          <Route path="/CarpetsandMats" element={[<Header/>, <Carpetsandmats />, <Footer />]} />  
+
+          <Route path="/Bedsheets" element={[<Header/>, <Bedsheets />, <Footer />]} />
 
           <Route path="/IndianAttire" element={[<Header/>, <IndianAttire />, <Footer />]} />
 
