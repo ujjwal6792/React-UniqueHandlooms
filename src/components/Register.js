@@ -22,6 +22,7 @@ function Register() {
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
         return db.collection("users").doc(auth.user.uid).set({
+            uid: auth.user.uid,
             firstname,
             surname,
             email,

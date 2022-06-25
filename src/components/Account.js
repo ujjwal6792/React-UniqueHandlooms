@@ -29,10 +29,14 @@ function Account() {
     .collection("wishlist")
     .orderBy("date", "desc");
 
+  const userRef = firebase
+  .firestore()
+  .collection(`users`)
+  .doc(user?.uid)
+
   useEffect(() => {
     if (user) {
-      const userRef = doc(db, "users", user?.uid);
-      getDoc(userRef).then((doc) => {
+      userRef.onSnapshot((doc) => {
         const userDetails = { ...doc.data(), id: doc.id };
 
         dispatch({
@@ -50,6 +54,14 @@ function Account() {
   }, []);
 
   useEffect(() => {
+    userRef.collection("wishlist")
+    .orderBy("date", "desc")
+    .onSnapshot((collections) => {
+      return setWishlistRender(collections.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    })
+  },[showWishlist])
+
+  useEffect(() => {
     setFirstname(userDetailsContext[0]?.firstname);
     setSurname(userDetailsContext[0]?.surname);
     setEmail(userDetailsContext[0]?.email);
@@ -57,12 +69,7 @@ function Account() {
     setAddress(userDetailsContext[0]?.address);
   }, [updateDetails]);
 
-  useEffect(() => {
-    wishlistRef
-    .onSnapshot((collections) => {
-      return setWishlistRender(collections.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    })
-  },[showWishlist])
+
 
   const submitUserDetails = (e) => {
     e.preventDefault();

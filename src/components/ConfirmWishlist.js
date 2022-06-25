@@ -23,6 +23,7 @@ function ConfirmWishlist() {
     db.collection('users').doc(user?.uid).collection('wishlist').doc(Timename)
       .set({
         date:  Timename,
+        uid: user.uid,
         basket: basket,
       })
       .then(() => {
