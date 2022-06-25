@@ -17,7 +17,8 @@ function ConfirmWishlist() {
     const date = new Date();
     const Timename = date.toString()
     e.preventDefault();
-    if (user){
+    if (user&&basket){
+    console.log(basket)
     setSubmitProcess(true)
     db.collection('users').doc(user?.uid).collection('wishlist').doc(Timename)
       .set({
