@@ -13,6 +13,7 @@ import Cushions from "../pages/Cushions";
 import Mattress from "../pages/Mattress";
 import Towels from "../pages/Towels";
 import { FiChevronDown } from "react-icons/fi";
+import { fetchMore, fetchBack } from "../utility/FetchButton";
 
 function Allproduct() {
   const [filterCat, setFilterCat] = useState("Our Collection");
@@ -22,6 +23,7 @@ function Allproduct() {
   const productRef = firebase.firestore().collection("products");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     productRef
       .limit(12)
       .get()
@@ -32,30 +34,6 @@ function Allproduct() {
         setlastProducts(collections.docs[collections.docs.length - 1]);
       });
   }, []);
-
-  const fetchMore = () => {
-    productRef
-      .startAfter(lastProducts)
-      .limit(12)
-      .get()
-      .then((collections) => {
-        setProducts(
-          collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-        );
-      });
-  };
-
-  const fetchBack = () => {
-    productRef
-      .endBefore(lastProducts)
-      .limitToLast(12)
-      .get()
-      .then((collections) => {
-        setProducts(
-          collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-        );
-      });
-  };
 
   if (products.length === 0) {
     return (
@@ -152,10 +130,20 @@ function Allproduct() {
             </div>
 
             <div className="paginate">
-              <button className="paginateButton" onClick={fetchBack}>
+              <button
+                className="paginateButton"
+                onClick={() => {
+                  fetchBack(productRef, lastProducts, setProducts);
+                }}
+              >
                 back
               </button>
-              <button className="paginateButton" onClick={fetchMore}>
+              <button
+                className="paginateButton"
+                onClick={() => {
+                  fetchMore(productRef, lastProducts, setProducts);
+                }}
+              >
                 more
               </button>
             </div>

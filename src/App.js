@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style/App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import Home from "./components/Home";
 import Welcome from "./components/Welcome";
 import Header from "./components/Header";
@@ -22,7 +22,6 @@ import Carpetsandmats from "./pages/Carpetsandmats";
 import Cushions from "./pages/Cushions";
 import Mattress from "./pages/Mattress";
 import Towels from "./pages/Towels";
-
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -67,15 +66,17 @@ useEffect(() => {
     });
   }, [dispatch]);
 
-  return (
-    // BEM
+  const location = useLocation();
 
-    <Router>
-      
+useEffect(() => {
+    window.scrollTo(0, 0);
+  },[location]);
+
+  return (
         <div className="app">
+
           <Routes>
           <Route path="/Towels" element={[<Header/>, <Towels />, <Footer />]} />  
-
 
           <Route path="/Mattress" element={[<Header/>, <Mattress />, <Footer />]} />  
           
@@ -111,7 +112,7 @@ useEffect(() => {
             />
           </Routes>
         </div>
-    </Router>
+
   );
 }
 export default App;
