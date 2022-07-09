@@ -90,6 +90,14 @@
 }
 .product__info{
 height: 10vh;
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.product__rating{
+  font-weight: 500;
 }
 
 .product__info .product__title {

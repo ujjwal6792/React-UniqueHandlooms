@@ -98,7 +98,7 @@ function Allproduct() {
                     setFilterCat(e.target.innerText);
                   }}
                 >
-                  Carpets
+                  Carpets & Mats
                 </label>
                 <label
                   onClick={(e) => {
@@ -113,20 +113,20 @@ function Allproduct() {
                   }}
                 >
                   Mattress
-                </label>{" "}
-                <label
-                  onClick={(e) => {
-                    setFilterCat(e.target.innerText);
-                  }}
-                >
-                  Towels
-                </label>{" "}
+                </label>
                 <label
                   onClick={(e) => {
                     setFilterCat(e.target.innerText);
                   }}
                 >
                   Cushions
+                </label>
+                <label
+                  onClick={(e) => {
+                    setFilterCat(e.target.innerText);
+                  }}
+                >
+                  Towels
                 </label>
               </div>
             )}
@@ -163,7 +163,7 @@ function Allproduct() {
         )}
         {filterCat == "Indian Apparel" && <IndianAttire />}
         {filterCat == "Bedsheets" && <Bedsheets />}
-        {filterCat == "Carpets" && <Carpets />}
+        {filterCat == "Carpets & Mats" && <Carpets />}
         {filterCat == "Towels" && <Towels />}
         {filterCat == "Mattress" && <Mattress />}
         {filterCat == "Cushions" && <Cushions />}
