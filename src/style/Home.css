@@ -79,6 +79,7 @@
 }
 
 .allProductsButton button {
+  cursor: pointer;
   background: transparent;
   display: inline-block;
   padding: 12px 24px;

@@ -5,6 +5,8 @@ import { auth, storage, db } from "./firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, updateDoc, deleteDoc, getDoc } from "firebase/firestore";
 import { useStateValue } from "./StateProvider";
+import WishlistDisplay from "./WishlistDisplay"
+import UserDetails from "./UserDetails";
 import firebase from "./firebase";
 
 function Admin() {
@@ -159,45 +161,24 @@ function Admin() {
       }, 5000);
     }
   };
-  // websitelist
-  // const [shopping, setShopping] = useState([]);
-  // const [grocery, setGrocery] = useState([]);
-  // const [travel, setTravel] = useState([]);
-  // const [pharma, setPharma] = useState([]);
-  // const [topDeals, setTopDeals] = useState([]);
-  // const shoppingRef = firebase.firestore().collection("Shopping");
-  // const groceryRef = firebase.firestore().collection("grocery");
-  // const travelRef = firebase.firestore().collection("travel");
-  // const pharmaRef = firebase.firestore().collection("pharma");
-  // const topDealsRef = firebase.firestore().collection("topDeals");
-  // Display Items
-  // useEffect(() => {
-  //   shoppingRef.get().then((collections) => {
-  //     setShopping(
-  //       collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-  //     );
-  //   });
-  //   groceryRef.get().then((collections) => {
-  //     setGrocery(
-  //       collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-  //     );
-  //     travelRef.get().then((collections) => {
-  //       setTravel(
-  //         collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-  //       );
-  //     });
-  //     pharmaRef.get().then((collections) => {
-  //       setPharma(
-  //         collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-  //       );
-  //     });
-  //     topDealsRef.get().then((collections) => {
-  //       setTopDeals(
-  //         collections.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-  //       );
-  //     });
-  //   });
-  // }, [sucess, edit]);
+
+  // user wishlist display
+  const [wishlistRender, setWishlistRender] = useState(null);
+
+  const userRef = firebase
+  .firestore()
+  .collectionGroup('wishlist')
+  
+
+  useEffect(() => {
+    userRef
+    .orderBy("date", "desc")
+    .get().then( (docs)=>
+        setWishlistRender( docs.docs.map((doc) =>
+          ({...doc.data(), id: doc.id}) ) 
+          )    
+      )
+},[])
 
   return (
     <div className="admin">
@@ -290,138 +271,15 @@ function Admin() {
           </>
         )}
       </div>
-      <div className="colors"></div>
-      <div className="adminEdit">
-        {/* {user && (
-          <div className="webDetails">
-            {shopping.map((item) => (
-              <form key={item.id} className="adminCard">
-                <p style={{ background: item.gradient }}>
-                  {" "}
-                  <img
-                    src={item.img}
-                    alt=""
-                    style={{ height: "50px", width: "50px" }}
-                  />
-                </p>
-                <p>{item.name}</p>
-                <p className="dsc">{item.description}</p>
-                <p className="crudLink">{item.link}</p>
-                <div className="crudButton">
-                  <button
-                    onClick={(e) => {
-                      editDb(e, item.id, "Shopping");
-                    }}
-                  >
-                    edit
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      deleteDb(e, item.id, "Shopping");
-                    }}
-                  >
-                    del
-                  </button>
-                </div>
-              </form>
-            ))}
-
-            {travel.map((item) => (
-              <form key={item.id} className="adminCard">
-                <p style={{ background: item.gradient }}>
-                  {" "}
-                  <img
-                    src={item.img}
-                    alt=""
-                    style={{ height: "50px", width: "50px" }}
-                  />
-                </p>
-                <p>{item.name}</p>
-                <p className="dsc">{item.description}</p>
-                <p className="crudLink">{item.link}</p>
-                <div className="crudButton">
-                  <button
-                    onClick={(e) => {
-                      editDb(e, item.id, "travel");
-                    }}
-                  >
-                    edit
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      deleteDb(e, item.id, "travel");
-                    }}
-                  >
-                    del
-                  </button>
-                </div>
-              </form>
-            ))}
-            {grocery.map((item) => (
-              <form key={item.id} className="adminCard">
-                <p style={{ background: item.gradient }}>
-                  {" "}
-                  <img
-                    src={item.img}
-                    alt=""
-                    style={{ height: "50px", width: "50px" }}
-                  />
-                </p>
-                <p>{item.name}</p>
-                <p className="dsc">{item.description}</p>
-                <p className="crudLink">{item.link}</p>
-                <div className="crudButton">
-                  <button
-                    onClick={(e) => {
-                      editDb(e, item.id, "grocery");
-                    }}
-                  >
-                    edit
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      deleteDb(e, item.id, "grocery");
-                    }}
-                  >
-                    del
-                  </button>
-                </div>
-              </form>
-            ))}
-            {pharma.map((item) => (
-              <form key={item.id} className="adminCard">
-                <p style={{ background: item.gradient }}>
-                  {" "}
-                  <img
-                    src={item.img}
-                    alt=""
-                    style={{ height: "50px", width: "50px" }}
-                  />
-                </p>
-                <p>{item.name}</p>
-                <p className="dsc">{item.description}</p>
-                <p className="crudLink">{item.link}</p>
-                <div className="crudButton">
-                  <button
-                    onClick={(e) => {
-                      editDb(e, item.id, "pharma");
-                    }}
-                  >
-                    edit
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      deleteDb(e, item.id, "pharma");
-                    }}
-                  >
-                    del
-                  </button>
-                </div>
-              </form>
-            ))}
-          </div>
-        )} */}
-      </div>
+        <div className="userWishlistAdmin">
+        {wishlistRender?.map((item) => (
+          <>
+          <UserDetails uid={item.uid}/>
+          <WishlistDisplay key={item.id.slice(16,40)} basket={item.
+          basket} id={item.id} />
+          </>
+          ))}
+        </div>
     </div>
   );
 }

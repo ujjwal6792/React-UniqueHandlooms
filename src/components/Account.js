@@ -22,13 +22,6 @@ function Account() {
   const [wishlistRender, setWishlistRender] = useState(null);
   const [showWishlist, setShowWishlist] = useState(true);
 
-  const wishlistRef = firebase
-    .firestore()
-    .collection(`users`)
-    .doc(user?.uid)
-    .collection("wishlist")
-    .orderBy("date", "desc");
-
   const userRef = firebase
   .firestore()
   .collection(`users`)
@@ -180,7 +173,7 @@ function Account() {
           {showWishlist &&
             wishlistRender?.map((item) => (
               <WishlistDisplay key={item.id.slice(16,40)} basket={item.basket} id={item.id} />
-            ))}
+              ))}
         </div>
       </div>
     );

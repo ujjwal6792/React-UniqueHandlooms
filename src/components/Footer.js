@@ -2,6 +2,7 @@ import React from "react";
 import "../style/Footer.css";
 import { Link } from "react-router-dom";
 import Basket from "./Basket";
+import {FiFacebook, FiInstagram, FiMail  } from "react-icons/fi"
 
 function Footer() {
   const date = new Date()
@@ -39,18 +40,17 @@ function Footer() {
          <input type="text" placeholder="Enter your query" />
          <button>Send</button>
          <div className="media-icons">
-           <a><i className="fab fa-facebook-f"></i></a>
-           <a><i className="fab fa-instagram"></i></a>
-           <a><i className="fab fa-twitter"></i></a>
-           <a><i className="fab fa-youtube"></i></a>
-           <a><i className="fab fa-linkedin-in"></i></a>
+           <a><FiFacebook/></a>
+           <a><FiInstagram/></a>
+           <a><FiMail/></a>
          </div>
+         <div className="bottom">
+     <p>Copyright © {year} <a>Unique Handlooms</a></p>
+   </div>
        </form>
      </div>
    </div>
-   <div className="bottom">
-     <p>Copyright © {year} <a>Unique Handlooms</a></p>
-   </div>
+
       {/* mobile */}
       <div className="footer">
         <Link to="/" className="footerItems ">

@@ -18,8 +18,11 @@ function ConfirmWishlist() {
     const Timename = date.toString()
     e.preventDefault();
     if (user&&basket){
-    console.log(basket)
     setSubmitProcess(true)
+    db.collection('users').doc(user?.uid)
+    .set({
+      wishlist: "true"
+    }, {merge: true})
     db.collection('users').doc(user?.uid).collection('wishlist').doc(Timename)
       .set({
         date:  Timename,
