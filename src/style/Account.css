@@ -8,7 +8,6 @@
     margin: 0 10px;
     border-radius: 16px;
     background: #fff;
-    /* background: linear-gradient(90deg, rgba(39,48,67,1) 0%, rgba(255,255,255,1) 50%); */
     color: #273043;
     display: flex;
     flex-direction: column;
@@ -36,7 +35,6 @@
     margin: 0 10px;
     border-radius: 16px;
     background: #fff;
-    /* background: linear-gradient(90deg, rgba(39,48,67,1) 0%, rgba(255,255,255,1) 50%); */
     color: #273043;
     display: flex;
     flex-direction: column;
@@ -52,9 +50,10 @@
 }
 
 .editAccount input {
-    color: #ececec;
-    background-color:#273043;
+    color: #273043;
+    /* background-color:#27304390 */
     border-radius: 5px;
+    border: 2px solid #273043;
     padding: 2px 5px;
 }
 
@@ -95,4 +94,43 @@
 
 .accountWishBar button img {
     width: 1.8rem;
+}
+
+@media screen and (max-width: 480px){
+    .account{
+        padding-top: 2rem;
+    }
+
+    .accountDetails,.editAccount,.accountWish h4 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .accountDetails p {
+        font-size: 1.2rem;
+    }
+
+    .account button {
+        font-size: 1.2rem;
+        padding: .5rem 1rem;
+        max-width: fit-content;
+    }
+
+    .accountDetails button {
+        margin-top: 1rem;
+    }
+
+    .editAccount input {
+        font-size: 1.2rem;
+        padding: .5rem;
+    }
+
+    .editAccount form {
+        margin-top: 1.5rem;
+    }
+
+    .editAccount button{
+        margin-left: auto ;
+        margin-right: auto;
+    }
 }

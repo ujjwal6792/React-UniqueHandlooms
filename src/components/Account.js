@@ -116,7 +116,7 @@ function Account() {
             <button
               onClick={() => setUpdateDetails(!updateDetails ? true : false)}
             >
-              {!updateDetails ? "Update My Details" : "close"}
+              {!updateDetails ? "Update My Details" : "Close"}
             </button>
           </div>
         )}

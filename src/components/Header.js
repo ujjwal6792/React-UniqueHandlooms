@@ -24,7 +24,7 @@ function Header() {
           <img className="header__logo" src={Logo} alt="logo" />
         </Link>
         <div className={click ? "hidden" : "menu-icon"} onClick={handleClick}>
-          <img src="https://img.icons8.com/external-bluetone-bomsymbols-/91/000000/external-hamburger-menu-digital-design-bluetone-set-2-bluetone-bomsymbols-.png" />
+        <img src="https://img.icons8.com/sf-black/100/000000/menu.png"/>
         </div>
 
         <ul className={click ? "nav-menu active" : "nav-menu"}>
