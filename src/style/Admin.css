@@ -1,0 +1,68 @@
+.admin{
+    display: flex;
+    flex-direction: column;
+    --border: 5px solid #27304390;
+    --border-none: 0;
+    --font-size-med: 1.2rem;
+    --font-weight-med-bold: 500;
+    --background-color-blue: #273043
+}
+
+.successContainer{
+    min-height: 60px;
+}
+
+.successText {
+    font-size: 1.5rem;
+    margin: 2rem 0 0 2rem;
+    text-align: justify;
+    color: var(--background-color-blue);
+    font-weight: var(--font-weight-med-bold);
+}
+
+.adminInput{
+    width: 66%;
+    margin:2rem ;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 1.5rem;
+    font-size: var(--font-size-med);
+}
+
+.adminInput input, select{
+    border: var(--border);
+    font-size: var(--font-size-med);
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.adminInput input[type="file" i], select{
+    cursor: pointer;
+}
+
+.adminInput input[type="file" i]::file-selector-button {
+    cursor: pointer;
+    background: transparent;
+    border: var(--border-none);
+    color: #ffffff;
+    background-color: var(--background-color-blue);
+}
+
+.adminInput button{
+    background-color: var(--background-color-blue);
+    border: var(--border-none);
+    font-weight: var(--font-weight-med-bold);
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+
+.adminInput{
+    margin-top: 5rem;
+    width: auto;
+}
+
+}

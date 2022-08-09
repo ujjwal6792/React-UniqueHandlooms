@@ -1,0 +1,98 @@
+.account {
+    background-color: #756d5e05;
+    margin: 3rem 0rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,  minmax(400px, 1fr))
+}
+.accountDetails{
+    margin: 0 10px;
+    border-radius: 16px;
+    background: #fff;
+    /* background: linear-gradient(90deg, rgba(39,48,67,1) 0%, rgba(255,255,255,1) 50%); */
+    color: #273043;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+
+.accountDetails p {
+    color: #273043;
+
+    text-align: center;
+    font-weight: 500;
+}
+
+.accountDetails button{
+    margin: auto auto 0 auto;
+    width: clamp(300px, 400px, 85%) ;
+    color: #ececec;
+    background-color:#273043;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+.editAccount{
+    margin: 0 10px;
+    border-radius: 16px;
+    background: #fff;
+    /* background: linear-gradient(90deg, rgba(39,48,67,1) 0%, rgba(255,255,255,1) 50%); */
+    color: #273043;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+
+.editAccount form {
+    display: grid;
+    grid-template-columns: repeat(1, clamp(300px, 400px, 85%));
+    justify-content: center;
+    gap: 1rem;
+}
+
+.editAccount input {
+    color: #ececec;
+    background-color:#273043;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+.editAccount button{
+    color: #ececec;
+    background-color:#273043;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+.accountWish{
+    margin: 0 10px;
+    /* border: 2px solid #27304320; */
+    background: #fff;
+    border-radius: 16px;
+    color: #273043;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+
+.accountWishBar{
+    display: flex;
+    justify-content: space-between;
+}
+.accountWishBar h4{
+    display: flex;
+    justify-content: center;
+}
+.accountWishBar button {
+    padding-right: .4rem;
+    background: transparent;
+    border: transparent;
+    display: flex;
+    align-items: top;
+}
+
+.accountWishBar button img {
+    width: 1.8rem;
+}

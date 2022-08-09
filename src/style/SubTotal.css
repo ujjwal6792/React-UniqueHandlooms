@@ -1,0 +1,78 @@
+.subtotal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  height: fit-content;
+  padding: 20px;
+  background-image: linear-gradient(to top, #ececec 10%, white 90%);
+  box-shadow: 1px -1px 10px #27304310, -1px 1px 10px #9197ae10;
+  border-radius: 3px;
+}
+
+.subtotalGift {
+  display: flex;
+  align-items: center;
+}
+
+.subtotalGift > input {
+  margin-right: 5px;
+}
+
+Link {
+  text-decoration: none;
+}
+.paymentbutton {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 6px 12px;
+  border: 2px solid #4f4f4f;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-size: 19px;
+  color: black;
+  z-index: 1;
+}
+
+.paymentbutton::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.paymentbutton:hover{
+  color: #ffffff;
+ border: 2px solid #273043;
+}
+
+.paymentbutton:hover::before{
+  top: -35%;
+  background-color: #273043;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.paymentbutton:hover::after{
+  top: -45%;
+  background-color: #273043;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+@media screen and (max-width: 480px){
+  .subtotal{
+    width: 100%;
+    margin-bottom: 5rem;
+    margin-left: auto ;
+    margin-right: auto ;
+  }
+}
